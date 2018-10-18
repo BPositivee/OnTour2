@@ -42,7 +42,7 @@ namespace Negocio
 
         }
 
-
+        //agregar
         public void InsertarApoderado(decimal id, string username, string email, string ap_paterno, string ap_materno, 
                                         string nombre, string telefono, string celular, string password, decimal rolId)
         {
