@@ -57,7 +57,7 @@
                 <tr>
                     <td class="text-white">Contraseña:</td>
                     <td>
-                        <asp:TextBox ID="txtContraseña" runat="server" Width="156px" CssClass="form-control"></asp:TextBox></td>
+                        <asp:TextBox ID="txtPassword" runat="server" Width="156px" CssClass="form-control"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td></td>

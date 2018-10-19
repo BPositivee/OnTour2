@@ -24,7 +24,7 @@ namespace WebApplication1
 
         }
 
-        private void RegistrarApoderado() {
+        public void RegistrarApoderado() {
 
 
             Apoderado ap = new Apoderado();
