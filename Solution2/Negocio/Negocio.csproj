@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DALC\DALC.csproj">
-      <Project>{009340de-1a94-4b22-982f-5cf9d55138be}</Project>
+      <Project>{b5c50366-bb17-4801-959f-f0a837beca8a}</Project>
       <Name>DALC</Name>
     </ProjectReference>
   </ItemGroup>

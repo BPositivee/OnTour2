@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{009340DE-1A94-4B22-982F-5CF9D55138BE}</ProjectGuid>
+    <ProjectGuid>{B5C50366-BB17-4801-959F-F0A837BECA8A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DALC</RootNamespace>
