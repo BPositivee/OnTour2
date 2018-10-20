@@ -223,7 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DALC\DALC.csproj">
-      <Project>{1efec8cc-48a1-407a-a53c-8bce8d54b8a2}</Project>
+      <Project>{009340de-1a94-4b22-982f-5cf9d55138be}</Project>
       <Name>DALC</Name>
     </ProjectReference>
     <ProjectReference Include="..\Negocio\Negocio.csproj">

@@ -383,7 +383,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="PKG_AGENTE_AGREGAR_AGENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_AGENTE.AGREGAR_AGENTE">
+        <Function Name="PKG_AGENTE_AGREGAR_AGENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_AGENTE.AGREGAR_AGENTE">
           <Parameter Name="AG_AGENTE_ID" Type="number" Mode="In" />
           <Parameter Name="AG_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="AG_AP_PATERNO" Type="varchar2" Mode="In" />
@@ -393,13 +393,13 @@
           <Parameter Name="AG_PASSWORD" Type="varchar2" Mode="In" />
           <Parameter Name="AG_ROLES_ROLES_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_AGENTE_CONSULTA_AGENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_AGENTE.CONSULTA_AGENTE">
+        <Function Name="PKG_AGENTE_CONSULTA_AGENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_AGENTE.CONSULTA_AGENTE">
           <Parameter Name="AG_USERNAME" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="PKG_AGENTE_ELIMINAR_AGENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_AGENTE.ELIMINAR_AGENTE">
+        <Function Name="PKG_AGENTE_ELIMINAR_AGENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_AGENTE.ELIMINAR_AGENTE">
           <Parameter Name="AG_AGENTE_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_AGENTE_MODIFICAR_AGENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_AGENTE.MODIFICAR_AGENTE">
+        <Function Name="PKG_AGENTE_MODIFICAR_AGENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_AGENTE.MODIFICAR_AGENTE">
           <Parameter Name="AG_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="AG_AP_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="AG_AP_MATERNO" Type="varchar2" Mode="In" />
@@ -409,7 +409,7 @@
           <Parameter Name="AG_ROLES_ROLES_ID" Type="number" Mode="In" />
           <Parameter Name="AG_AGENTE_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_ALUMNO_AGREGAR_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_ALUMNO.AGREGAR_ALUMNO">
+        <Function Name="PKG_ALUMNO_AGREGAR_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_ALUMNO.AGREGAR_ALUMNO">
           <Parameter Name="A_ALUMNO_ID" Type="number" Mode="In" />
           <Parameter Name="A_AP_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="A_AP_MATERNO" Type="varchar2" Mode="In" />
@@ -419,13 +419,13 @@
           <Parameter Name="A_APODERADO_APODERADO_ID" Type="number" Mode="In" />
           <Parameter Name="A_CURSO_ID_CURSO" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_ALUMNO_CONSULTA_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_ALUMNO.CONSULTA_ALUMNO">
+        <Function Name="PKG_ALUMNO_CONSULTA_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_ALUMNO.CONSULTA_ALUMNO">
           <Parameter Name="A_RUT" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="PKG_ALUMNO_ELIMINAR_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_ALUMNO.ELIMINAR_ALUMNO">
+        <Function Name="PKG_ALUMNO_ELIMINAR_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_ALUMNO.ELIMINAR_ALUMNO">
           <Parameter Name="A_ALUMNO_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_ALUMNO_MODIFICAR_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_ALUMNO.MODIFICAR_ALUMNO">
+        <Function Name="PKG_ALUMNO_MODIFICAR_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_ALUMNO.MODIFICAR_ALUMNO">
           <Parameter Name="A_AP_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="A_AP_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="A_NOMBRE" Type="varchar2" Mode="In" />
@@ -435,7 +435,7 @@
           <Parameter Name="A_CURSO_ID_CURSO" Type="number" Mode="In" />
           <Parameter Name="A_ALUMNO_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_APODERADO_AGREGAR_APODERADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_APODERADO.AGREGAR_APODERADO">
+        <Function Name="PKG_APODERADO_AGREGAR_APODERADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_APODERADO.AGREGAR_APODERADO">
           <Parameter Name="A_APODERADO_ID" Type="number" Mode="In" />
           <Parameter Name="A_USERNAME" Type="varchar2" Mode="In" />
           <Parameter Name="A_EMAIL" Type="varchar2" Mode="In" />
@@ -447,13 +447,13 @@
           <Parameter Name="A_PASSWORD" Type="varchar2" Mode="In" />
           <Parameter Name="A_ROLES_ROLES_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_APODERADO_CONSULTA_APODERADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_APODERADO.CONSULTA_APODERADO">
+        <Function Name="PKG_APODERADO_CONSULTA_APODERADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_APODERADO.CONSULTA_APODERADO">
           <Parameter Name="A_USERNAME" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="PKG_APODERADO_ELIMINAR_APODERADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_APODERADO.ELIMINAR_APODERADO">
+        <Function Name="PKG_APODERADO_ELIMINAR_APODERADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_APODERADO.ELIMINAR_APODERADO">
           <Parameter Name="A_APODERADO_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_APODERADO_MODIFICAR_APODERADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_APODERADO.MODIFICAR_APODERADO">
+        <Function Name="PKG_APODERADO_MODIFICAR_APODERADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_APODERADO.MODIFICAR_APODERADO">
           <Parameter Name="A_USERNAME" Type="varchar2" Mode="In" />
           <Parameter Name="A_EMAIL" Type="varchar2" Mode="In" />
           <Parameter Name="A_AP_PATERNO" Type="varchar2" Mode="In" />
@@ -465,20 +465,20 @@
           <Parameter Name="A_ROLES_ROLES_ID" Type="number" Mode="In" />
           <Parameter Name="A_APODERADO_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_DESTINO_AGREGAR_DESTINO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_DESTINO.AGREGAR_DESTINO">
+        <Function Name="PKG_DESTINO_AGREGAR_DESTINO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_DESTINO.AGREGAR_DESTINO">
           <Parameter Name="D_DESTINO_ID" Type="number" Mode="In" />
           <Parameter Name="D_CIUDAD" Type="varchar2" Mode="In" />
           <Parameter Name="D_PAIS" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="PKG_DESTINO_ELIMINAR_DESTINO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_DESTINO.ELIMINAR_DESTINO">
+        <Function Name="PKG_DESTINO_ELIMINAR_DESTINO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_DESTINO.ELIMINAR_DESTINO">
           <Parameter Name="D_DESTINO_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_DESTINO_MODIFICAR_DESTINO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_DESTINO.MODIFICAR_DESTINO">
+        <Function Name="PKG_DESTINO_MODIFICAR_DESTINO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_DESTINO.MODIFICAR_DESTINO">
           <Parameter Name="D_DESTINO_ID" Type="number" Mode="In" />
           <Parameter Name="D_CIUDAD" Type="varchar2" Mode="In" />
           <Parameter Name="D_PAIS" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="PKG_ENCARGADO_AGREGAR_ENCARGADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_ENCARGADO.AGREGAR_ENCARGADO">
+        <Function Name="PKG_ENCARGADO_AGREGAR_ENCARGADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_ENCARGADO.AGREGAR_ENCARGADO">
           <Parameter Name="E_ENCARGADO_ID" Type="number" Mode="In" />
           <Parameter Name="E_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="E_AP_PATERNO" Type="varchar2" Mode="In" />
@@ -491,13 +491,13 @@
           <Parameter Name="E_ROLES_ROLES_ID" Type="number" Mode="In" />
           <Parameter Name="E_CURSO_ID_CURSO" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_ENCARGADO_CONSULTA_ENCARGADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_ENCARGADO.CONSULTA_ENCARGADO">
+        <Function Name="PKG_ENCARGADO_CONSULTA_ENCARGADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_ENCARGADO.CONSULTA_ENCARGADO">
           <Parameter Name="E_USERNAME" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="PKG_ENCARGADO_ELIMINAR_ENCARGADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_ENCARGADO.ELIMINAR_ENCARGADO">
+        <Function Name="PKG_ENCARGADO_ELIMINAR_ENCARGADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_ENCARGADO.ELIMINAR_ENCARGADO">
           <Parameter Name="E_ENCARGADO_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="PKG_ENCARGADO_MODIFICAR_ENCARGADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR2" StoreFunctionName="PKG_ENCARGADO.MODIFICAR_ENCARGADO">
+        <Function Name="PKG_ENCARGADO_MODIFICAR_ENCARGADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PORTAFOLIO02" StoreFunctionName="PKG_ENCARGADO.MODIFICAR_ENCARGADO">
           <Parameter Name="E_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="E_AP_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="E_AP_MATERNO" Type="varchar2" Mode="In" />
@@ -511,21 +511,21 @@
           <Parameter Name="E_ENCARGADO_ID" Type="number" Mode="In" />
         </Function>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="ACTIVIDAD_TOUR" EntityType="Self.ACTIVIDAD_TOUR" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="ADMINISTRADOR" EntityType="Self.ADMINISTRADOR" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="AGENTE" EntityType="Self.AGENTE" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="APODERADO" EntityType="Self.APODERADO" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="COLEGIO" EntityType="Self.COLEGIO" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="DESTINO" EntityType="Self.DESTINO" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="ENCARGADO" EntityType="Self.ENCARGADO" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="PAGO" EntityType="Self.PAGO" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="POLIZA" EntityType="Self.POLIZA" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="SER_ADICIONAL" EntityType="Self.SER_ADICIONAL" Schema="ONTOUR2" store:Type="Tables" />
-          <EntitySet Name="TOUR" EntityType="Self.TOUR" Schema="ONTOUR2" store:Type="Tables" />
+          <EntitySet Name="ACTIVIDAD_TOUR" EntityType="Self.ACTIVIDAD_TOUR" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="ADMINISTRADOR" EntityType="Self.ADMINISTRADOR" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="AGENTE" EntityType="Self.AGENTE" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="APODERADO" EntityType="Self.APODERADO" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="COLEGIO" EntityType="Self.COLEGIO" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="DESTINO" EntityType="Self.DESTINO" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="ENCARGADO" EntityType="Self.ENCARGADO" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="PAGO" EntityType="Self.PAGO" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="POLIZA" EntityType="Self.POLIZA" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="SER_ADICIONAL" EntityType="Self.SER_ADICIONAL" Schema="PORTAFOLIO02" store:Type="Tables" />
+          <EntitySet Name="TOUR" EntityType="Self.TOUR" Schema="PORTAFOLIO02" store:Type="Tables" />
           <AssociationSet Name="ACTIVIDAD_TOUR_TOUR_FK" Association="Self.ACTIVIDAD_TOUR_TOUR_FK">
             <End Role="TOUR" EntitySet="TOUR" />
             <End Role="ACTIVIDAD_TOUR" EntitySet="ACTIVIDAD_TOUR" />
