@@ -105,7 +105,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministradorTemp.aspx" />
+    <Content Include="AgenteTemp.aspx" />
     <Content Include="ApoderadoTemp.aspx" />
+    <Content Include="EncargadoTemp.aspx" />
     <Content Include="images\banner.jpg" />
     <Content Include="images\london.jpg" />
     <Content Include="Login.aspx" />
@@ -185,12 +188,33 @@
     <Content Include="scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministradorTemp.aspx.cs">
+      <DependentUpon>AdministradorTemp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministradorTemp.aspx.designer.cs">
+      <DependentUpon>AdministradorTemp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgenteTemp.aspx.cs">
+      <DependentUpon>AgenteTemp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgenteTemp.aspx.designer.cs">
+      <DependentUpon>AgenteTemp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ApoderadoTemp.aspx.cs">
       <DependentUpon>ApoderadoTemp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ApoderadoTemp.aspx.designer.cs">
       <DependentUpon>ApoderadoTemp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoTemp.aspx.cs">
+      <DependentUpon>EncargadoTemp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoTemp.aspx.designer.cs">
+      <DependentUpon>EncargadoTemp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

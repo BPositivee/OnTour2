@@ -20,40 +20,81 @@ namespace WebApplication1
             string user = txtUsuario.Text;
             string pass = txtPassword.Text;
 
-           var consulta = (from u in Conexion.Entidades.APODERADO
-                            where u.USERNAME == user && u.PASSWORD == pass
-                            select u );
+            var consulta = (from a in Conexion.Entidades.APODERADO
+                            where a.USERNAME == user && a.PASSWORD == pass && a.ROLES_ROLES_ID == 2
+                            select a);
 
 
             var consulta2 = (from u in Conexion.Entidades.ADMINISTRADOR
-                            where u.USERNAME == user && u.PASSWORD == pass
-                            select u);
+                             where u.USERNAME == user && u.PASSWORD == pass && u.ROLES_ROLES_ID == 4
+                             select u);
 
-            var consulta3 = (from u in Conexion.Entidades.AGENTE
-                            where u.USERNAME == user && u.PASSWORD == pass
-                            select u);
+            var consulta3 = (from b in Conexion.Entidades.AGENTE
+                             where b.USERNAME == user && b.PASSWORD == pass && b.ROLES_ROLES_ID == 1
+                             select b);
 
-            var consulta4 = (from u in Conexion.Entidades.ENCARGADO
-                            where u.USERNAME == user && u.PASSWORD == pass
-                            select u);
+            var consulta4 = (from c in Conexion.Entidades.ENCARGADO
+                             where c.USERNAME == user && c.PASSWORD == pass && c.ROLES_ROLES_ID == 3
+                             select c);
 
-            foreach (var x in consulta) {
+            //login apoderado
+            if (consulta.Count() > 0)
+            {
+                foreach (var apo in consulta) {
+                    Session["user"] = apo.USERNAME;
+                    Response.Redirect("ApoderadoTemp.aspx");
+                }
+             
 
-                if (x.USERNAME == user && x.PASSWORD == pass) {
+            }
+            else {
+                //login administrador
+                if (consulta2.Count() > 0)
+                {
 
-                    Session["user"] = x.USERNAME;
+                    foreach (var adm in consulta2)
+                    {
+                        Session["user"] = adm.USERNAME;
+                        Response.Redirect("AdministradorTemp.aspx");
+                    }
 
-                    if (x.ROLES_ROLES_ID == 2) {
-                        Response.Redirect("ApoderadoTemp.aspx");
+                }
+                else
+                    //login agente
+                    if (consulta3.Count() > 0)
+                {
+
+                    foreach (var ag in consulta3)
+                    {
+                        Session["user"] = ag.USERNAME;
+                        Response.Redirect("AgenteTemp.aspx");
+
+                    }
+                }
+                else
+                //login encargado
+                    if (consulta4.Count() > 0)
+                {
+                    foreach (var en in consulta4)
+                    {
+
+                        Session["user"] = en.USERNAME;
+                        Response.Redirect("EncargadoTemp.aspx");
 
                     }
 
+                }
+                else {
+
+                    Estado.Text = "El usuario no se encuntra registrado";
 
                 }
 
-
             }
-            
+
+
+
         }
+
     }
 }

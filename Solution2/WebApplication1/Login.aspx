@@ -70,9 +70,11 @@
                         <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="Inicio.aspx" class="text-white">Volver</asp:HyperLink></td>
                 </tr>
 
+                <tr>
+                    <td>
+                <asp:Label ID="Estado" runat="server" Text="" class="text-white"></asp:Label></td>
 
-
-
+                </tr>
 
 
             </table>
