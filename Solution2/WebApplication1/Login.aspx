@@ -5,14 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Login</title>
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <script src="scripts/jquery-3.0.0.min.js"></script>
     <script src="scripts/popper.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
 
 </head>
-<body style="background-image: url('images/london.jpg'); max_width: 100%; height: auto;">
+<body style="background-image: url('images/london.jpg'); background-size:cover">
     <form id="form1" runat="server">
         <div>
             <table>
@@ -65,12 +65,12 @@
                         <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" Width="86px" OnClick="btnIngresar_Click" class="btn btn-success" /></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    
                     <td>
                         <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="Inicio.aspx" class="text-white">Volver</asp:HyperLink></td>
                 </tr>
 
-                <tr>
+               <tr>
                     <td>
                 <asp:Label ID="Estado" runat="server" Text="" class="text-white"></asp:Label></td>
 

@@ -116,6 +116,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="RegistroAlumnos.aspx" />
     <Content Include="scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="scripts\jquery-3.0.0.min.map" />
     <None Include="Web.Debug.config">
@@ -237,6 +238,13 @@
     </Compile>
     <Compile Include="Registrate.aspx.designer.cs">
       <DependentUpon>Registrate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroAlumnos.aspx.cs">
+      <DependentUpon>RegistroAlumnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroAlumnos.aspx.designer.cs">
+      <DependentUpon>RegistroAlumnos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

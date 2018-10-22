@@ -1118,6 +1118,16 @@
             <Parameter Name="A_PASSWORD" Mode="In" Type="String" />
             <Parameter Name="A_ROLES_ROLES_ID" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="AgregarAlumno">
+            <Parameter Name="A_ALUMNO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="A_AP_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="A_AP_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="A_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="A_RUT_ALUMNO" Mode="In" Type="String" />
+            <Parameter Name="A_FECHA_NAC" Mode="In" Type="DateTime" />
+            <Parameter Name="A_APODERADO_APODERADO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="A_CURSO_ID_CURSO" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1303,6 +1313,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="AgregarApoderado" FunctionName="Model.Store.PKG_APODERADO_AGREGAR_APODERADO" />
+          <FunctionImportMapping FunctionImportName="AgregarAlumno" FunctionName="Model.Store.PKG_ALUMNO_AGREGAR_ALUMNO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -42,6 +42,7 @@ namespace WebApplication1
             {
                 foreach (var apo in consulta) {
                     Session["user"] = apo.USERNAME;
+                    Session["id"] = apo.APODERADO_ID;
                     Response.Redirect("ApoderadoTemp.aspx");
                 }
              

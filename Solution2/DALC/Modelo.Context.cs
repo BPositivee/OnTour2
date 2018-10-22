@@ -88,5 +88,42 @@ namespace DALC
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarApoderado", a_APODERADO_IDParameter, a_USERNAMEParameter, a_EMAILParameter, a_AP_PATERNOParameter, a_AP_MATERNOParameter, a_NOMBREParameter, a_TELEFONOParameter, a_CELULARParameter, a_PASSWORDParameter, a_ROLES_ROLES_IDParameter);
         }
+    
+        public virtual int AgregarAlumno(Nullable<decimal> a_ALUMNO_ID, string a_AP_PATERNO, string a_AP_MATERNO, string a_NOMBRE, string a_RUT_ALUMNO, Nullable<System.DateTime> a_FECHA_NAC, Nullable<decimal> a_APODERADO_APODERADO_ID, Nullable<decimal> a_CURSO_ID_CURSO)
+        {
+            var a_ALUMNO_IDParameter = a_ALUMNO_ID.HasValue ?
+                new ObjectParameter("A_ALUMNO_ID", a_ALUMNO_ID) :
+                new ObjectParameter("A_ALUMNO_ID", typeof(decimal));
+    
+            var a_AP_PATERNOParameter = a_AP_PATERNO != null ?
+                new ObjectParameter("A_AP_PATERNO", a_AP_PATERNO) :
+                new ObjectParameter("A_AP_PATERNO", typeof(string));
+    
+            var a_AP_MATERNOParameter = a_AP_MATERNO != null ?
+                new ObjectParameter("A_AP_MATERNO", a_AP_MATERNO) :
+                new ObjectParameter("A_AP_MATERNO", typeof(string));
+    
+            var a_NOMBREParameter = a_NOMBRE != null ?
+                new ObjectParameter("A_NOMBRE", a_NOMBRE) :
+                new ObjectParameter("A_NOMBRE", typeof(string));
+    
+            var a_RUT_ALUMNOParameter = a_RUT_ALUMNO != null ?
+                new ObjectParameter("A_RUT_ALUMNO", a_RUT_ALUMNO) :
+                new ObjectParameter("A_RUT_ALUMNO", typeof(string));
+    
+            var a_FECHA_NACParameter = a_FECHA_NAC.HasValue ?
+                new ObjectParameter("A_FECHA_NAC", a_FECHA_NAC) :
+                new ObjectParameter("A_FECHA_NAC", typeof(System.DateTime));
+    
+            var a_APODERADO_APODERADO_IDParameter = a_APODERADO_APODERADO_ID.HasValue ?
+                new ObjectParameter("A_APODERADO_APODERADO_ID", a_APODERADO_APODERADO_ID) :
+                new ObjectParameter("A_APODERADO_APODERADO_ID", typeof(decimal));
+    
+            var a_CURSO_ID_CURSOParameter = a_CURSO_ID_CURSO.HasValue ?
+                new ObjectParameter("A_CURSO_ID_CURSO", a_CURSO_ID_CURSO) :
+                new ObjectParameter("A_CURSO_ID_CURSO", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarAlumno", a_ALUMNO_IDParameter, a_AP_PATERNOParameter, a_AP_MATERNOParameter, a_NOMBREParameter, a_RUT_ALUMNOParameter, a_FECHA_NACParameter, a_APODERADO_APODERADO_IDParameter, a_CURSO_ID_CURSOParameter);
+        }
     }
 }

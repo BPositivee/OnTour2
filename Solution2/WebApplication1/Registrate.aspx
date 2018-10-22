@@ -13,7 +13,7 @@
 
 
 </head>
-<body style="background-image: url('images/banner.jpg'); max_width: 100%; height: auto;">
+<body style="background-image: url('images/banner.jpg'); background-size: cover">
     <form id="form1" runat="server">
         <table>
             <tr>

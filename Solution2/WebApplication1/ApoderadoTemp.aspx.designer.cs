@@ -22,6 +22,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// Control txtUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtUser;
+        
+        /// <summary>
         /// Control gvApoderados.
         /// </summary>
         /// <remarks>
@@ -31,15 +40,6 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.GridView gvApoderados;
         
         /// <summary>
-        /// Control edsApoderados.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource edsApoderados;
-        
-        /// <summary>
         /// Control btnRegistroAlumnos.
         /// </summary>
         /// <remarks>
@@ -47,5 +47,23 @@ namespace WebApplication1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistroAlumnos;
+        
+        /// <summary>
+        /// Control RealizarPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RealizarPago;
+        
+        /// <summary>
+        /// Control RevisarContrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RevisarContrato;
     }
 }
