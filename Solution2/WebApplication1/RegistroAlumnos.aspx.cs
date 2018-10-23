@@ -15,9 +15,7 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            String id = Session["id"].ToString();
-            decimal idApo = Int32.Parse(id);
-
+        
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -31,10 +29,10 @@ namespace WebApplication1
             ALUMNO al = new ALUMNO();
             var a = (from p in Conexion.Entidades.ALUMNO select p.ALUMNO_ID).Max();
             decimal idAlumno = a + 1;
-            string nombre = tbxNombre.Text;
-            string apellidoP = tbxApellidoP.Text;
-            string apellidoM = tbxApellidoM.Text;
-            string rut = tbxRut.Text;
+            string nombre = tbxNombre.Text.ToUpper();
+            string apellidoP = tbxApellidoP.Text.ToUpper();
+            string apellidoM = tbxApellidoM.Text.ToUpper();
+            string rut = tbxRut.Text.ToUpper();
             string nombreCur = ddlCursos.SelectedItem.ToString();
             string fecha = tbxFecha.Text;
 
@@ -62,7 +60,8 @@ namespace WebApplication1
 
             Conexion.Entidades.ALUMNO.Add(al);
             Conexion.Entidades.SaveChanges();
-
+            Estado.Text = "Alumno Agregado";
+            Response.AddHeader("REFRESH", "3;URL=ApoderadoTemp.aspx");
 
 
         }
@@ -94,14 +93,6 @@ namespace WebApplication1
 
                 ddlCursos.DataSource = cur.ToList();
                 ddlCursos.DataBind();
-
-
-
-
-
-
-
-
             }
 
         }

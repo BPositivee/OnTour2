@@ -10,10 +10,11 @@
     <script src="scripts/jquery-3.0.0.min.js"></script>
     <script src="scripts/popper.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
+    <link href="Estilos/estiloRegistro.css" rel="stylesheet" />
 
 </head>
 <body style="background-image: url('images/london.jpg'); background-size:cover">
-    <form id="form1" runat="server">
+ 
         <div>
             <table>
                 <tr>
@@ -41,21 +42,22 @@
             <br />
             <br />
             <br />
+       <form id="form1" runat="server">
             <table align="center">
 
                 <tr>
-                    <td class="text-white">Iniciar Sesion</td>
+                    <td>Iniciar Sesion</td>
 
                 </tr>
 
 
                 <tr>
-                    <td class="text-white">Usuario:</td>
+                    <td>Usuario:</td>
                     <td>
                         <asp:TextBox ID="txtUsuario" runat="server" Width="156px" CssClass="form-control"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <td class="text-white">Contraseña:</td>
+                    <td>Contraseña:</td>
                     <td>
                         <asp:TextBox ID="txtPassword" runat="server" Width="156px" CssClass="form-control"></asp:TextBox></td>
                 </tr>
@@ -67,12 +69,12 @@
                 <tr>
                     
                     <td>
-                        <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="Inicio.aspx" class="text-white">Volver</asp:HyperLink></td>
+                        <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="Inicio.aspx">Volver</asp:HyperLink></td>
                 </tr>
 
                <tr>
                     <td>
-                <asp:Label ID="Estado" runat="server" Text="" class="text-white"></asp:Label></td>
+                <asp:Label ID="Estado" runat="server" Text=""></asp:Label></td>
 
                 </tr>
 

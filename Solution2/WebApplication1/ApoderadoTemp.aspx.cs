@@ -15,12 +15,9 @@ namespace WebApplication1
             String user = Session["user"].ToString();
             String id = Session["id"].ToString();
             txtUser.Text = "Bienvenido " + user;
+
+          
             CargarAlumnos();
-           // gvApoderados.HeaderRow.Cells[0].Text = "APELLIDO PATERNO";
-           // gvApoderados.HeaderRow.Cells[1].Text = "APELLIDO MATERNO";
-           // gvApoderados.HeaderRow.Cells[2].Text = "NOMBRE";
-           // gvApoderados.HeaderRow.Cells[3].Text = "RUT";
-            //gvApoderados.HeaderRow.Cells[4].Text = "FECHA NACIMIENTO";
         }
 
         protected void btnRegistroAlumnos_Click(object sender, EventArgs e)
@@ -50,18 +47,24 @@ namespace WebApplication1
             var alum = (from a in Conexion.Entidades.ALUMNO
                         where a.APODERADO_APODERADO_ID == idApo
                         select new {
-                            a.AP_PATERNO,
-                            a.AP_MATERNO,
-                            a.NOMBRE,
-                            a.RUT,
-                            a.FECH_NAC
+                            APELLIDOPATERNO = a.AP_PATERNO,
+                            APELLIDOMATERNO = a.AP_MATERNO,
+                            NOMBRE = a.NOMBRE,
+                            RUT = a.RUT,
+                            FECHANACIMIENTO = a.FECH_NAC
                         }
                         );
+           
 
-            gvApoderados.DataSource = alum.ToList();
-            gvApoderados.DataBind();
+           
+                gvApoderados.DataSource = alum.ToList();
+                gvApoderados.DataBind();
+           
+          
 
         }
+
+       
 
     }
 }

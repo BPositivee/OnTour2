@@ -10,11 +10,11 @@
     <script src="scripts/jquery-3.0.0.min.js"></script>
     <script src="scripts/popper.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
-
+    <link href="Estilos/estiloRegistro.css" rel="stylesheet" />
 
 </head>
 <body style="background-image: url('images/banner.jpg'); background-size: cover">
-    <form id="form1" runat="server">
+  
         <table>
             <tr>
                 <td class="auto-style2">
@@ -31,27 +31,29 @@
                                 </li>
 
                             </ul>
-                             <form class="form-inline my-2 my-lg-0">
+                            
                                     <a class="nav-link text-white" href="Login.aspx" >LogIn </a>
-                                </form>
+                              
                         </div>
                     </nav>
                 </td>
             </tr>
-
+            </table>
             <br />
 
             <br />
 
             <br />
+              <form id="form1" runat="server">
+                  <table align="center">
             <tr>
-                <td class="text-white">Registo de Cuenta</td>
+                <td>Registo de Cuenta</td>
             </tr>
 
 
             <tr>
 
-                <td class="text-white">Tipo de usuario</td>
+                <td>Tipo de usuario</td>
                 <td>
                     <asp:DropDownList ID="ddlTipoUsuario" runat="server" CssClass="form-control">
                         <asp:ListItem Selected="True" Value="Seleccione">Seleccione </asp:ListItem>
@@ -62,7 +64,7 @@
                     <asp:RequiredFieldValidator ID="rfvTipoUsuario" runat="server" ErrorMessage="* Debe seleccionar un Tipo de usuario" ControlToValidate="ddlTipoUsuario" ForeColor="Red" InitialValue="Seleccione"></asp:RequiredFieldValidator></td>
             </tr>
             <tr>
-                <td class="text-white">Nombre</td>
+                <td >Nombre</td>
                 <td>
                     <asp:TextBox ID="tbxNombre" runat="server" CssClass="form-control"></asp:TextBox></td>
                 <td class="auto-style1">
@@ -72,7 +74,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-white">Apellido Paterno</td>
+                <td>Apellido Paterno</td>
                 <td>
                     <asp:TextBox ID="tbxApellidoP" runat="server" CssClass="form-control"></asp:TextBox></td>
                 <td class="auto-style1">
@@ -82,7 +84,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-white">Apellido Materno</td>
+                <td>Apellido Materno</td>
                 <td>
                     <asp:TextBox ID="tbxApellidoM" runat="server" CssClass="form-control"></asp:TextBox></td>
                 <td class="auto-style1">
@@ -90,7 +92,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-white">Nombre Usuario</td>
+                <td>Nombre Usuario</td>
                 <td>
                     <asp:TextBox ID="tbxUsername" runat="server" CssClass="form-control"></asp:TextBox></td>
                 <td class="auto-style1">
@@ -98,7 +100,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-white">Contraseña</td>
+                <td>Contraseña</td>
                 <td>
                     <asp:TextBox ID="tbxPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox></td>
                 <td class="auto-style1">
@@ -106,7 +108,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-white">Correo</td>
+                <td>Correo</td>
                 <td>
                     <asp:TextBox ID="tbxEmail" runat="server" CssClass="form-control"></asp:TextBox></td>
                 <td class="auto-style1">
@@ -116,7 +118,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-white">Celular</td>
+                <td>Celular</td>
                 <td>
                     <asp:TextBox ID="tbxCelular" runat="server" CssClass="form-control"></asp:TextBox></td>
                 <td class="auto-style1">
@@ -125,15 +127,15 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-white">Telefono Fijo</td>
+                <td>Telefono Fijo</td>
                 <td>
                     <asp:TextBox ID="tbxTelefono" runat="server" CssClass="form-control"></asp:TextBox></td>
                 <td class="auto-style1"></td>
             </tr>
             <tr>
-                <td class="text-white">
+                <td>
 
-                    <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="Inicio.aspx" class="text-white">Volver</asp:HyperLink>
+                    <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="Inicio.aspx">Volver</asp:HyperLink>
                 </td>
                 <td>
                     <asp:Button ID="btnRegistrar" runat="server" Text="Registrarse" Width="128px" OnClick="btnRegistrar_Click" class="btn btn-success" />
@@ -141,7 +143,7 @@
                 </td>
                 <td class="auto-style1">
                     
-                    <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="text-white"></asp:Label>
+                    <asp:Label ID="lblMensaje" runat="server" Text="" ></asp:Label>
                 </td>
             </tr>
 
