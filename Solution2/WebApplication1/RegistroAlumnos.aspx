@@ -125,7 +125,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:HyperLink ID="hlAlumno" runat="server" NavigateUrl="Apoderado.aspx">Volver</asp:HyperLink></td>
+                        <asp:HyperLink ID="hlAlumno" runat="server" NavigateUrl="ApoderadoTemp.aspx">Volver</asp:HyperLink></td>
                     <td>
                         <asp:Label ID="Estado" runat="server" Text=""></asp:Label></td>
                 </tr>

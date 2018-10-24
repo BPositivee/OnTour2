@@ -111,6 +111,7 @@
     <Content Include="EncargadoTemp.aspx" />
     <Content Include="Estilos\estiloRegistro.css" />
     <Content Include="images\banner.jpg" />
+    <Content Include="images\cartagena.jpeg" />
     <Content Include="images\lisboa.jpg" />
     <Content Include="images\london.jpg" />
     <Content Include="Login.aspx" />

@@ -34,9 +34,9 @@ namespace WebApplication1
             string apellidoM = tbxApellidoM.Text.ToUpper();
             string rut = tbxRut.Text.ToUpper();
             string nombreCur = ddlCursos.SelectedItem.ToString();
-            string fecha = tbxFecha.Text;
+           
 
-            DateTime fecha_nac = DateTime.Parse(fecha);
+            DateTime fecha_nac = DateTime.Parse(tbxFecha.Text).Date;
 
 
 

@@ -35,9 +35,11 @@ namespace WebApplication1
 
         }
 
-        protected void CerrarSesion_Click(object sender, EventArgs e)
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-
+            Session["user"] = "";
+            Session["id"] = "";
+            Response.Redirect("Login.aspx");
         }
 
         public void CargarAlumnos() {
