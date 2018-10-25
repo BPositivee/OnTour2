@@ -125,5 +125,54 @@ namespace DALC
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarAlumno", a_ALUMNO_IDParameter, a_AP_PATERNOParameter, a_AP_MATERNOParameter, a_NOMBREParameter, a_RUT_ALUMNOParameter, a_FECHA_NACParameter, a_APODERADO_APODERADO_IDParameter, a_CURSO_ID_CURSOParameter);
         }
+    
+        public virtual int InsertarEncargado(Nullable<decimal> e_ENCARGADO_ID, string e_NOMBRE, string e_AP_PATERNO, string e_AP_MATERNO, string e_EMAIL, string e_PASSWORD, string e_TELEFONO, Nullable<decimal> e_AGENTE_AGENTE_ID, string e_USERNAME, Nullable<decimal> e_ROLES_ROLES_ID, Nullable<decimal> e_CURSO_ID_CURSO)
+        {
+            var e_ENCARGADO_IDParameter = e_ENCARGADO_ID.HasValue ?
+                new ObjectParameter("E_ENCARGADO_ID", e_ENCARGADO_ID) :
+                new ObjectParameter("E_ENCARGADO_ID", typeof(decimal));
+    
+            var e_NOMBREParameter = e_NOMBRE != null ?
+                new ObjectParameter("E_NOMBRE", e_NOMBRE) :
+                new ObjectParameter("E_NOMBRE", typeof(string));
+    
+            var e_AP_PATERNOParameter = e_AP_PATERNO != null ?
+                new ObjectParameter("E_AP_PATERNO", e_AP_PATERNO) :
+                new ObjectParameter("E_AP_PATERNO", typeof(string));
+    
+            var e_AP_MATERNOParameter = e_AP_MATERNO != null ?
+                new ObjectParameter("E_AP_MATERNO", e_AP_MATERNO) :
+                new ObjectParameter("E_AP_MATERNO", typeof(string));
+    
+            var e_EMAILParameter = e_EMAIL != null ?
+                new ObjectParameter("E_EMAIL", e_EMAIL) :
+                new ObjectParameter("E_EMAIL", typeof(string));
+    
+            var e_PASSWORDParameter = e_PASSWORD != null ?
+                new ObjectParameter("E_PASSWORD", e_PASSWORD) :
+                new ObjectParameter("E_PASSWORD", typeof(string));
+    
+            var e_TELEFONOParameter = e_TELEFONO != null ?
+                new ObjectParameter("E_TELEFONO", e_TELEFONO) :
+                new ObjectParameter("E_TELEFONO", typeof(string));
+    
+            var e_AGENTE_AGENTE_IDParameter = e_AGENTE_AGENTE_ID.HasValue ?
+                new ObjectParameter("E_AGENTE_AGENTE_ID", e_AGENTE_AGENTE_ID) :
+                new ObjectParameter("E_AGENTE_AGENTE_ID", typeof(decimal));
+    
+            var e_USERNAMEParameter = e_USERNAME != null ?
+                new ObjectParameter("E_USERNAME", e_USERNAME) :
+                new ObjectParameter("E_USERNAME", typeof(string));
+    
+            var e_ROLES_ROLES_IDParameter = e_ROLES_ROLES_ID.HasValue ?
+                new ObjectParameter("E_ROLES_ROLES_ID", e_ROLES_ROLES_ID) :
+                new ObjectParameter("E_ROLES_ROLES_ID", typeof(decimal));
+    
+            var e_CURSO_ID_CURSOParameter = e_CURSO_ID_CURSO.HasValue ?
+                new ObjectParameter("E_CURSO_ID_CURSO", e_CURSO_ID_CURSO) :
+                new ObjectParameter("E_CURSO_ID_CURSO", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertarEncargado", e_ENCARGADO_IDParameter, e_NOMBREParameter, e_AP_PATERNOParameter, e_AP_MATERNOParameter, e_EMAILParameter, e_PASSWORDParameter, e_TELEFONOParameter, e_AGENTE_AGENTE_IDParameter, e_USERNAMEParameter, e_ROLES_ROLES_IDParameter, e_CURSO_ID_CURSOParameter);
+        }
     }
 }

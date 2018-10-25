@@ -1128,6 +1128,19 @@
             <Parameter Name="A_APODERADO_APODERADO_ID" Mode="In" Type="Decimal" />
             <Parameter Name="A_CURSO_ID_CURSO" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="InsertarEncargado">
+            <Parameter Name="E_ENCARGADO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="E_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="E_AP_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="E_AP_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="E_EMAIL" Mode="In" Type="String" />
+            <Parameter Name="E_PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="E_TELEFONO" Mode="In" Type="String" />
+            <Parameter Name="E_AGENTE_AGENTE_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="E_USERNAME" Mode="In" Type="String" />
+            <Parameter Name="E_ROLES_ROLES_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="E_CURSO_ID_CURSO" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1314,6 +1327,7 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="AgregarApoderado" FunctionName="Model.Store.PKG_APODERADO_AGREGAR_APODERADO" />
           <FunctionImportMapping FunctionImportName="AgregarAlumno" FunctionName="Model.Store.PKG_ALUMNO_AGREGAR_ALUMNO" />
+          <FunctionImportMapping FunctionImportName="InsertarEncargado" FunctionName="Model.Store.PKG_ENCARGADO_AGREGAR_ENCARGADO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

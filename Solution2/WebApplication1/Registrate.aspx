@@ -86,7 +86,7 @@
                     <asp:DropDownList ID="ddlTipoUsuario" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlTipoUsuario_SelectedIndexChanged" AutoPostBack="True">
                         <asp:ListItem Selected="True" Value="Seleccione">Seleccione </asp:ListItem>
                         <asp:ListItem Value="2" Text="Encargado"></asp:ListItem>
-                        <asp:ListItem Value="Apoderado" Text="Apoderado"></asp:ListItem>
+                        <asp:ListItem Value="3" Text="Apoderado"></asp:ListItem>
                     </asp:DropDownList></td>
                 <td class="auto-style1">
                     <asp:RequiredFieldValidator ID="rfvTipoUsuario" runat="server" ErrorMessage="* Debe seleccionar un Tipo de usuario" ControlToValidate="ddlTipoUsuario" ForeColor="Red" InitialValue="Seleccione"></asp:RequiredFieldValidator></td>
@@ -169,7 +169,7 @@
                 <td class="auto-style3">
                     <asp:Label ID="lblColegio" runat="server" Text="Colegio" Enabled="False" Visible="False"></asp:Label></td>
                 <td class="auto-style1">
-                    <asp:DropDownList ID="ddlColegio" runat="server" class="btn btn-primary" Enabled="False" Visible="False">
+                    <asp:DropDownList ID="ddlColegio" runat="server" class="btn btn-primary" Enabled="False" Visible="False" AutoPostBack="True" DataTextField="NOMBRE_COLEGIO" DataValueField="NOMBRE_COLEGIO" OnSelectedIndexChanged="ddlColegio_SelectedIndexChanged">
                         <asp:ListItem Selected="True" Value="Seleccione">Seleccione </asp:ListItem>
                     </asp:DropDownList></td>
                 <td class="auto-style1">
@@ -243,7 +243,7 @@
                     <asp:Label ID="lblCurso" runat="server" Text="Curso" Enabled="False" Visible="False"></asp:Label>
                 </td>
                 <td class="auto-style1">
-                    <asp:DropDownList ID="ddlCurso" runat="server" class="btn btn-primary" Enabled="False" Visible="False">
+                    <asp:DropDownList ID="ddlCurso" runat="server" class="btn btn-primary" Enabled="False" Visible="False" DataTextField="NOMBRE_CURSO" DataValueField="NOMBRE_CURSO">
                         <asp:ListItem Selected="True" Value="Seleccione">Seleccione </asp:ListItem>
                     </asp:DropDownList></td>
                 <td class="auto-style1">

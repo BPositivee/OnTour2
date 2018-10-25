@@ -15,16 +15,99 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+            if (!IsPostBack)
+            {
+                CargarDdlColegio();
+            }
         }
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+            if (ddlTipoUsuario.SelectedValue == "3") //apoderado
+            {
+                RegistrarApoderado();
 
-            RegistrarApoderado();
+            }
+            else if (ddlTipoUsuario.SelectedValue == "2")//encargado
+            {
+
+                RegistrarEncargado();
+
+            }
+
 
         }
 
-        public void RegistrarApoderado() {
+        public void CargarDdlColegio()
+        {
+
+            var c = from i in Conexion.Entidades.COLEGIO
+                    select new { i.NOMBRE_COLEGIO };
+            ddlColegio.DataSource = c.ToList();
+            ddlColegio.DataBind();
+
+        }
+
+        public void RegistrarEncargado()
+        {
+            ENCARGADO en = new ENCARGADO();
+            if (RadioButtonList1.SelectedValue == "Si" && RadioButtonList2.SelectedValue == "Si")
+            { //list1 = colegio     list2 = curso
+                var e = (from p in Conexion.Entidades.ENCARGADO select p.ENCARGADO_ID).Max();
+                decimal encargado_id = e + 1;
+                string nombre = tbxNombre.Text.ToUpper();
+                string apellidoP = tbxApellidoP.Text.ToUpper();
+                string apellidoM = tbxApellidoM.Text.ToUpper();
+                string username = tbxUsername.Text.ToUpper();
+                string password = tbxPassword.Text;
+                string email = tbxEmail.Text.ToUpper();
+                string telefono = tbxTelefono.Text;
+                string nombreCol = ddlColegio.SelectedItem.ToString();
+                string nombreCur = ddlCurso.SelectedItem.ToString();
+
+
+                var i = (from c in Conexion.Entidades.CURSO   // busqueda de id curso mediante nombre
+                         where c.NOMBRE_CURSO == nombreCur
+                         select c.ID_CURSO).First();
+
+                Random rnd = new Random();
+                var ag = (from a in Conexion.Entidades.AGENTE
+                          select a).ToList();
+
+                int can_ag = ag.Count() + 1;
+
+                decimal r = Convert.ToDecimal(rnd.Next(can_ag));
+
+
+
+                decimal agente_id = r;
+
+                decimal curso_id = i;
+                decimal rol_id = 3;
+
+                en.ENCARGADO_ID = encargado_id;
+                en.NOMBRE = nombre;
+                en.AP_PATERNO = apellidoP;
+                en.AP_MATERNO = apellidoM;
+                en.EMAIL = email;
+                en.PASSWORD = password;
+                en.TELEFONO = telefono;
+                en.AGENTE_AGENTE_ID = agente_id;
+                en.USERNAME = username;
+                en.ROLES_ROLES_ID = rol_id;
+                en.CURSO_ID_CURSO = curso_id;
+
+                Conexion.Entidades.ENCARGADO.Add(en);
+                Conexion.Entidades.SaveChanges();
+                lblMensaje.Text = "Agregado Con Exito";
+                lblMensaje.Visible = true;
+
+
+            }
+
+        }
+
+        public void RegistrarApoderado()
+        {
 
 
             Apoderado ap = new Apoderado();
@@ -32,7 +115,7 @@ namespace WebApplication1
             //buscar ultimo registro
 
             var a = (from p in Conexion.Entidades.APODERADO select p.APODERADO_ID).Max();
-            
+
 
             decimal id = a + 1;
             string username = tbxUsername.Text.ToUpper();
@@ -46,13 +129,10 @@ namespace WebApplication1
             decimal rol = 2;
             string tipo = ddlTipoUsuario.SelectedItem.ToString();
 
-          
 
             ap.InsertarApoderado(id, username, email, apellidoP, apellidoM, nombre, telefono, celular, password, rol);
             lblMensaje.Text = "Agregado Con Exito";
             lblMensaje.Visible = true;
-
-
 
         }
 
@@ -63,7 +143,7 @@ namespace WebApplication1
 
         protected void btnGuardarCurso_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,10 +173,22 @@ namespace WebApplication1
                 lblMensajeC.Enabled = true;
                 lblMensajeC.Visible = true;
 
+                lblNombreCurso.Enabled = true;
+                lblNombreCurso.Visible = true;
+                tbxNombreCurso.Enabled = true;
+                tbxNombreCurso.Visible = true;
+                rfvNombreCurso.Enabled = true;
+                rfvNombreCurso.Visible = true;
+                btnGuardarCurso.Enabled = true;
+                btnGuardarCurso.Visible = true;
+                lblMensajeCu.Enabled = true;
+                lblMensajeCu.Visible = true;
+
 
 
             }
-            else {
+            else
+            {
 
                 lblNombreColegio.Enabled = false;
                 lblNombreColegio.Visible = false;
@@ -128,7 +220,8 @@ namespace WebApplication1
 
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (RadioButtonList2.SelectedValue == "No") {
+            if (RadioButtonList2.SelectedValue == "No")
+            {
                 lblNombreCurso.Enabled = true;
                 lblNombreCurso.Visible = true;
                 tbxNombreCurso.Enabled = true;
@@ -142,7 +235,9 @@ namespace WebApplication1
 
 
 
-            } else {
+            }
+            else
+            {
 
                 lblNombreCurso.Enabled = false;
                 lblNombreCurso.Visible = false;
@@ -193,7 +288,8 @@ namespace WebApplication1
                 rfvListaCurso.Enabled = true;
                 rfvListaCurso.Visible = true;
             }
-            else {
+            else
+            {
                 lblColegio.Enabled = false;
                 lblColegio.Visible = false;
                 ddlColegio.Enabled = false;
@@ -225,6 +321,22 @@ namespace WebApplication1
 
 
             }
+        }
+
+        protected void ddlColegio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string nombreCol = ddlColegio.SelectedValue;
+
+            var col = (from x in Conexion.Entidades.COLEGIO
+                       where x.NOMBRE_COLEGIO == nombreCol
+                       select x.COLEGIO_ID).First();
+
+            var cur = (from c in Conexion.Entidades.CURSO
+                       where c.COLEGIO_COLEGIO_ID == col
+                       select new { c.NOMBRE_CURSO });
+
+            ddlCurso.DataSource = cur.ToList();
+            ddlCurso.DataBind();
         }
     }
 }
