@@ -17,7 +17,6 @@ namespace DALC
         public CONTRATO()
         {
             this.PAGO = new HashSet<PAGO>();
-            this.SER_ADICIONAL = new HashSet<SER_ADICIONAL>();
         }
     
         public decimal CONTRATO_ID { get; set; }
@@ -27,10 +26,19 @@ namespace DALC
         public decimal TOTAL { get; set; }
         public decimal TOUR_TOUR_ID { get; set; }
         public decimal AGENTE_AGENTE_ID { get; set; }
+        public decimal DESTINO_DESTINO_ID { get; set; }
+        public decimal POLIZA_POLIZA_ID { get; set; }
+        public decimal ACTIVIDAD_TOUR_ACTIVIDAD_ID { get; set; }
+        public decimal ENCARGADO_ENCARGADO_ID { get; set; }
+        public decimal SER_ADICIONAL_ID { get; set; }
     
+        public virtual ACTIVIDAD_TOUR ACTIVIDAD_TOUR { get; set; }
         public virtual AGENTE AGENTE { get; set; }
+        public virtual DESTINO DESTINO { get; set; }
+        public virtual ENCARGADO ENCARGADO { get; set; }
+        public virtual POLIZA POLIZA { get; set; }
+        public virtual SER_ADICIONAL SER_ADICIONAL { get; set; }
         public virtual TOUR TOUR { get; set; }
         public virtual ICollection<PAGO> PAGO { get; set; }
-        public virtual ICollection<SER_ADICIONAL> SER_ADICIONAL { get; set; }
     }
 }

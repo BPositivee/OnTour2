@@ -22,6 +22,7 @@ namespace DALC
         public System.DateTime FECH_NAC { get; set; }
         public decimal APODERADO_APODERADO_ID { get; set; }
         public decimal CURSO_ID_CURSO { get; set; }
+        public Nullable<decimal> DEUDA { get; set; }
     
         public virtual APODERADO APODERADO { get; set; }
         public virtual CURSO CURSO { get; set; }

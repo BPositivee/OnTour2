@@ -16,7 +16,7 @@ namespace DALC
     {
         public POLIZA()
         {
-            this.TOUR = new HashSet<TOUR>();
+            this.CONTRATO = new HashSet<CONTRATO>();
         }
     
         public decimal POLIZA_ID { get; set; }
@@ -24,7 +24,8 @@ namespace DALC
         public decimal SUMA_ASEGURADA { get; set; }
         public decimal PRIMA { get; set; }
         public string DESCRIPCION { get; set; }
+        public string NOMBRE_POLIZA { get; set; }
     
-        public virtual ICollection<TOUR> TOUR { get; set; }
+        public virtual ICollection<CONTRATO> CONTRATO { get; set; }
     }
 }

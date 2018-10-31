@@ -12,7 +12,6 @@
           <Property Name="ACTIVIDAD_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE_ACTIVIDAD" Type="varchar2" MaxLength="45" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar2" MaxLength="150" />
-          <Property Name="TOUR_TOUR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="ADMINISTRADOR">
           <Key>
@@ -48,6 +47,7 @@
           <Property Name="FECH_NAC" Type="date" Nullable="false" />
           <Property Name="APODERADO_APODERADO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CURSO_ID_CURSO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DEUDA" Type="number" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="APODERADO">
           <Key>
@@ -84,6 +84,11 @@
           <Property Name="TOTAL" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TOUR_TOUR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="AGENTE_AGENTE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESTINO_DESTINO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="POLIZA_POLIZA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ENCARGADO_ENCARGADO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SER_ADICIONAL_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="CURSO">
           <Key>
@@ -125,8 +130,9 @@
           <Property Name="FECHA_PAGO" Type="date" Nullable="false" />
           <Property Name="MONTO_PAGO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CONTRATO_CONTRATO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="APODERADO_APODERADO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ENCARGADO_ENCARGADO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="APODERADO_APODERADO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="ENCARGADO_ENCARGADO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="POLIZA">
           <Key>
@@ -137,6 +143,7 @@
           <Property Name="SUMA_ASEGURADA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRIMA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar2" MaxLength="150" Nullable="false" />
+          <Property Name="NOMBRE_POLIZA" Type="varchar2" MaxLength="30" />
         </EntityType>
         <EntityType Name="ROLES">
           <Key>
@@ -153,7 +160,6 @@
           <Property Name="NOMBRE_SER" Type="varchar2" MaxLength="45" Nullable="false" />
           <Property Name="PRECIO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TIPO" Type="varchar2" MaxLength="45" Nullable="false" />
-          <Property Name="CONTRATO_CONTRATO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="TOUR">
           <Key>
@@ -164,21 +170,8 @@
           <Property Name="PRECIO_BASE" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DIAS" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRECIO_TOTAL" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="POLIZA_POLIZA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESTINO_DESTINO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
-        <Association Name="ACTIVIDAD_TOUR_TOUR_FK">
-          <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
-          <End Role="ACTIVIDAD_TOUR" Type="Self.ACTIVIDAD_TOUR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TOUR">
-              <PropertyRef Name="TOUR_ID" />
-            </Principal>
-            <Dependent Role="ACTIVIDAD_TOUR">
-              <PropertyRef Name="TOUR_TOUR_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ADMINISTRADOR_ROLES_FK">
           <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
           <End Role="ADMINISTRADOR" Type="Self.ADMINISTRADOR" Multiplicity="*" />
@@ -239,6 +232,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CONTRATO_ACTIVIDAD_TOUR_FK">
+          <End Role="ACTIVIDAD_TOUR" Type="Self.ACTIVIDAD_TOUR" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD_TOUR">
+              <PropertyRef Name="ACTIVIDAD_ID" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="CONTRATO_AGENTE_FK">
           <End Role="AGENTE" Type="Self.AGENTE" Multiplicity="1" />
           <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
@@ -248,6 +253,54 @@
             </Principal>
             <Dependent Role="CONTRATO">
               <PropertyRef Name="AGENTE_AGENTE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_DESTINO_FK">
+          <End Role="DESTINO" Type="Self.DESTINO" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESTINO">
+              <PropertyRef Name="DESTINO_ID" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="DESTINO_DESTINO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_ENCARGADO_FK">
+          <End Role="ENCARGADO" Type="Self.ENCARGADO" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENCARGADO">
+              <PropertyRef Name="ENCARGADO_ID" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="ENCARGADO_ENCARGADO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_POLIZA_FK">
+          <End Role="POLIZA" Type="Self.POLIZA" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLIZA">
+              <PropertyRef Name="POLIZA_ID" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="POLIZA_POLIZA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_SERVICIO_FK">
+          <End Role="SER_ADICIONAL" Type="Self.SER_ADICIONAL" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SER_ADICIONAL">
+              <PropertyRef Name="SER_ID" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="SER_ADICIONAL_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -312,7 +365,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PAGO_APODERADO_FK">
-          <End Role="APODERADO" Type="Self.APODERADO" Multiplicity="1" />
+          <End Role="APODERADO" Type="Self.APODERADO" Multiplicity="0..1" />
           <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="APODERADO">
@@ -336,7 +389,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PAGO_ENCARGADO_FK">
-          <End Role="ENCARGADO" Type="Self.ENCARGADO" Multiplicity="1" />
+          <End Role="ENCARGADO" Type="Self.ENCARGADO" Multiplicity="0..1" />
           <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ENCARGADO">
@@ -347,19 +400,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SER_ADICIONAL_CONTRATO_FK">
-          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
-          <End Role="SER_ADICIONAL" Type="Self.SER_ADICIONAL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTRATO">
-              <PropertyRef Name="CONTRATO_ID" />
-            </Principal>
-            <Dependent Role="SER_ADICIONAL">
-              <PropertyRef Name="CONTRATO_CONTRATO_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="TOUR_DESTINO_FK">
+        <Association Name="TOUR_DESTINOS_FK">
           <End Role="DESTINO" Type="Self.DESTINO" Multiplicity="1" />
           <End Role="TOUR" Type="Self.TOUR" Multiplicity="*" />
           <ReferentialConstraint>
@@ -368,18 +409,6 @@
             </Principal>
             <Dependent Role="TOUR">
               <PropertyRef Name="DESTINO_DESTINO_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="TOUR_POLIZA_FK">
-          <End Role="POLIZA" Type="Self.POLIZA" Multiplicity="1" />
-          <End Role="TOUR" Type="Self.TOUR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="POLIZA">
-              <PropertyRef Name="POLIZA_ID" />
-            </Principal>
-            <Dependent Role="TOUR">
-              <PropertyRef Name="POLIZA_POLIZA_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -526,10 +555,6 @@
           <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="PORTAFOLIO02" store:Type="Tables" />
           <EntitySet Name="SER_ADICIONAL" EntityType="Self.SER_ADICIONAL" Schema="PORTAFOLIO02" store:Type="Tables" />
           <EntitySet Name="TOUR" EntityType="Self.TOUR" Schema="PORTAFOLIO02" store:Type="Tables" />
-          <AssociationSet Name="ACTIVIDAD_TOUR_TOUR_FK" Association="Self.ACTIVIDAD_TOUR_TOUR_FK">
-            <End Role="TOUR" EntitySet="TOUR" />
-            <End Role="ACTIVIDAD_TOUR" EntitySet="ACTIVIDAD_TOUR" />
-          </AssociationSet>
           <AssociationSet Name="ADMINISTRADOR_ROLES_FK" Association="Self.ADMINISTRADOR_ROLES_FK">
             <End Role="ROLES" EntitySet="ROLES" />
             <End Role="ADMINISTRADOR" EntitySet="ADMINISTRADOR" />
@@ -550,8 +575,28 @@
             <End Role="ROLES" EntitySet="ROLES" />
             <End Role="APODERADO" EntitySet="APODERADO" />
           </AssociationSet>
+          <AssociationSet Name="CONTRATO_ACTIVIDAD_TOUR_FK" Association="Self.CONTRATO_ACTIVIDAD_TOUR_FK">
+            <End Role="ACTIVIDAD_TOUR" EntitySet="ACTIVIDAD_TOUR" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
           <AssociationSet Name="CONTRATO_AGENTE_FK" Association="Self.CONTRATO_AGENTE_FK">
             <End Role="AGENTE" EntitySet="AGENTE" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_DESTINO_FK" Association="Self.CONTRATO_DESTINO_FK">
+            <End Role="DESTINO" EntitySet="DESTINO" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_ENCARGADO_FK" Association="Self.CONTRATO_ENCARGADO_FK">
+            <End Role="ENCARGADO" EntitySet="ENCARGADO" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_POLIZA_FK" Association="Self.CONTRATO_POLIZA_FK">
+            <End Role="POLIZA" EntitySet="POLIZA" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_SERVICIO_FK" Association="Self.CONTRATO_SERVICIO_FK">
+            <End Role="SER_ADICIONAL" EntitySet="SER_ADICIONAL" />
             <End Role="CONTRATO" EntitySet="CONTRATO" />
           </AssociationSet>
           <AssociationSet Name="CONTRATO_TOUR_FK" Association="Self.CONTRATO_TOUR_FK">
@@ -586,16 +631,8 @@
             <End Role="ENCARGADO" EntitySet="ENCARGADO" />
             <End Role="PAGO" EntitySet="PAGO" />
           </AssociationSet>
-          <AssociationSet Name="SER_ADICIONAL_CONTRATO_FK" Association="Self.SER_ADICIONAL_CONTRATO_FK">
-            <End Role="CONTRATO" EntitySet="CONTRATO" />
-            <End Role="SER_ADICIONAL" EntitySet="SER_ADICIONAL" />
-          </AssociationSet>
-          <AssociationSet Name="TOUR_DESTINO_FK" Association="Self.TOUR_DESTINO_FK">
+          <AssociationSet Name="TOUR_DESTINOS_FK" Association="Self.TOUR_DESTINOS_FK">
             <End Role="DESTINO" EntitySet="DESTINO" />
-            <End Role="TOUR" EntitySet="TOUR" />
-          </AssociationSet>
-          <AssociationSet Name="TOUR_POLIZA_FK" Association="Self.TOUR_POLIZA_FK">
-            <End Role="POLIZA" EntitySet="POLIZA" />
             <End Role="TOUR" EntitySet="TOUR" />
           </AssociationSet>
         </EntityContainer>
@@ -611,8 +648,7 @@
           <Property Name="ACTIVIDAD_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE_ACTIVIDAD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="TOUR_TOUR_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="TOUR" Relationship="Self.ACTIVIDAD_TOUR_TOUR_FK" FromRole="ACTIVIDAD_TOUR" ToRole="TOUR" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_ACTIVIDAD_TOUR_FK" FromRole="ACTIVIDAD_TOUR" ToRole="CONTRATO" />
         </EntityType>
         <EntityType Name="ADMINISTRADOR">
           <Key>
@@ -652,6 +688,7 @@
           <Property Name="FECH_NAC" Type="DateTime" Nullable="false" />
           <Property Name="APODERADO_APODERADO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CURSO_ID_CURSO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DEUDA" Type="Decimal" Precision="38" Scale="0" />
           <NavigationProperty Name="APODERADO" Relationship="Self.ALUMNO_APODERADO_FK" FromRole="ALUMNO" ToRole="APODERADO" />
           <NavigationProperty Name="CURSO" Relationship="Self.ALUMNO_CURSO_FK" FromRole="ALUMNO" ToRole="CURSO" />
         </EntityType>
@@ -694,10 +731,19 @@
           <Property Name="TOTAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TOUR_TOUR_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="AGENTE_AGENTE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESTINO_DESTINO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="POLIZA_POLIZA_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ENCARGADO_ENCARGADO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SER_ADICIONAL_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD_TOUR" Relationship="Self.CONTRATO_ACTIVIDAD_TOUR_FK" FromRole="CONTRATO" ToRole="ACTIVIDAD_TOUR" />
           <NavigationProperty Name="AGENTE" Relationship="Self.CONTRATO_AGENTE_FK" FromRole="CONTRATO" ToRole="AGENTE" />
+          <NavigationProperty Name="DESTINO" Relationship="Self.CONTRATO_DESTINO_FK" FromRole="CONTRATO" ToRole="DESTINO" />
+          <NavigationProperty Name="ENCARGADO" Relationship="Self.CONTRATO_ENCARGADO_FK" FromRole="CONTRATO" ToRole="ENCARGADO" />
+          <NavigationProperty Name="POLIZA" Relationship="Self.CONTRATO_POLIZA_FK" FromRole="CONTRATO" ToRole="POLIZA" />
+          <NavigationProperty Name="SER_ADICIONAL" Relationship="Self.CONTRATO_SERVICIO_FK" FromRole="CONTRATO" ToRole="SER_ADICIONAL" />
           <NavigationProperty Name="TOUR" Relationship="Self.CONTRATO_TOUR_FK" FromRole="CONTRATO" ToRole="TOUR" />
           <NavigationProperty Name="PAGO" Relationship="Self.PAGO_CONTRATO_FK" FromRole="CONTRATO" ToRole="PAGO" />
-          <NavigationProperty Name="SER_ADICIONAL" Relationship="Self.SER_ADICIONAL_CONTRATO_FK" FromRole="CONTRATO" ToRole="SER_ADICIONAL" />
         </EntityType>
         <EntityType Name="CURSO">
           <Key>
@@ -717,7 +763,8 @@
           <Property Name="DESTINO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CIUDAD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PAIS" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="TOUR" Relationship="Self.TOUR_DESTINO_FK" FromRole="DESTINO" ToRole="TOUR" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_DESTINO_FK" FromRole="DESTINO" ToRole="CONTRATO" />
+          <NavigationProperty Name="TOUR" Relationship="Self.TOUR_DESTINOS_FK" FromRole="DESTINO" ToRole="TOUR" />
         </EntityType>
         <EntityType Name="ENCARGADO">
           <Key>
@@ -735,6 +782,7 @@
           <Property Name="ROLES_ROLES_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CURSO_ID_CURSO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="AGENTE" Relationship="Self.ENCARGADO_AGENTE_FK" FromRole="ENCARGADO" ToRole="AGENTE" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_ENCARGADO_FK" FromRole="ENCARGADO" ToRole="CONTRATO" />
           <NavigationProperty Name="CURSO" Relationship="Self.ENCARGADO_CURSO_FK" FromRole="ENCARGADO" ToRole="CURSO" />
           <NavigationProperty Name="ROLES" Relationship="Self.ENCARGADO_ROLES_FK" FromRole="ENCARGADO" ToRole="ROLES" />
           <NavigationProperty Name="PAGO" Relationship="Self.PAGO_ENCARGADO_FK" FromRole="ENCARGADO" ToRole="PAGO" />
@@ -747,8 +795,9 @@
           <Property Name="FECHA_PAGO" Type="DateTime" Nullable="false" />
           <Property Name="MONTO_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CONTRATO_CONTRATO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="APODERADO_APODERADO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ENCARGADO_ENCARGADO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="APODERADO_APODERADO_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ENCARGADO_ENCARGADO_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="APODERADO" Relationship="Self.PAGO_APODERADO_FK" FromRole="PAGO" ToRole="APODERADO" />
           <NavigationProperty Name="CONTRATO" Relationship="Self.PAGO_CONTRATO_FK" FromRole="PAGO" ToRole="CONTRATO" />
           <NavigationProperty Name="ENCARGADO" Relationship="Self.PAGO_ENCARGADO_FK" FromRole="PAGO" ToRole="ENCARGADO" />
@@ -762,7 +811,8 @@
           <Property Name="SUMA_ASEGURADA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRIMA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="TOUR" Relationship="Self.TOUR_POLIZA_FK" FromRole="POLIZA" ToRole="TOUR" />
+          <Property Name="NOMBRE_POLIZA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_POLIZA_FK" FromRole="POLIZA" ToRole="CONTRATO" />
         </EntityType>
         <EntityType Name="ROLES">
           <Key>
@@ -783,8 +833,7 @@
           <Property Name="NOMBRE_SER" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PRECIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TIPO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CONTRATO_CONTRATO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="CONTRATO" Relationship="Self.SER_ADICIONAL_CONTRATO_FK" FromRole="SER_ADICIONAL" ToRole="CONTRATO" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_SERVICIO_FK" FromRole="SER_ADICIONAL" ToRole="CONTRATO" />
         </EntityType>
         <EntityType Name="TOUR">
           <Key>
@@ -795,22 +844,19 @@
           <Property Name="PRECIO_BASE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DIAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRECIO_TOTAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="POLIZA_POLIZA_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESTINO_DESTINO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="ACTIVIDAD_TOUR" Relationship="Self.ACTIVIDAD_TOUR_TOUR_FK" FromRole="TOUR" ToRole="ACTIVIDAD_TOUR" />
           <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_TOUR_FK" FromRole="TOUR" ToRole="CONTRATO" />
-          <NavigationProperty Name="DESTINO" Relationship="Self.TOUR_DESTINO_FK" FromRole="TOUR" ToRole="DESTINO" />
-          <NavigationProperty Name="POLIZA" Relationship="Self.TOUR_POLIZA_FK" FromRole="TOUR" ToRole="POLIZA" />
+          <NavigationProperty Name="DESTINO" Relationship="Self.TOUR_DESTINOS_FK" FromRole="TOUR" ToRole="DESTINO" />
         </EntityType>
-        <Association Name="ACTIVIDAD_TOUR_TOUR_FK">
-          <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
-          <End Role="ACTIVIDAD_TOUR" Type="Self.ACTIVIDAD_TOUR" Multiplicity="*" />
+        <Association Name="CONTRATO_ACTIVIDAD_TOUR_FK">
+          <End Role="ACTIVIDAD_TOUR" Type="Self.ACTIVIDAD_TOUR" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TOUR">
-              <PropertyRef Name="TOUR_ID" />
+            <Principal Role="ACTIVIDAD_TOUR">
+              <PropertyRef Name="ACTIVIDAD_ID" />
             </Principal>
-            <Dependent Role="ACTIVIDAD_TOUR">
-              <PropertyRef Name="TOUR_TOUR_ID" />
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -899,7 +945,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PAGO_APODERADO_FK">
-          <End Role="APODERADO" Type="Self.APODERADO" Multiplicity="1" />
+          <End Role="APODERADO" Type="Self.APODERADO" Multiplicity="0..1" />
           <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="APODERADO">
@@ -919,6 +965,54 @@
             </Principal>
             <Dependent Role="CURSO">
               <PropertyRef Name="COLEGIO_COLEGIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_DESTINO_FK">
+          <End Role="DESTINO" Type="Self.DESTINO" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DESTINO">
+              <PropertyRef Name="DESTINO_ID" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="DESTINO_DESTINO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_ENCARGADO_FK">
+          <End Role="ENCARGADO" Type="Self.ENCARGADO" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENCARGADO">
+              <PropertyRef Name="ENCARGADO_ID" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="ENCARGADO_ENCARGADO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_POLIZA_FK">
+          <End Role="POLIZA" Type="Self.POLIZA" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLIZA">
+              <PropertyRef Name="POLIZA_ID" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="POLIZA_POLIZA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_SERVICIO_FK">
+          <End Role="SER_ADICIONAL" Type="Self.SER_ADICIONAL" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SER_ADICIONAL">
+              <PropertyRef Name="SER_ID" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="SER_ADICIONAL_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -946,18 +1040,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SER_ADICIONAL_CONTRATO_FK">
-          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
-          <End Role="SER_ADICIONAL" Type="Self.SER_ADICIONAL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTRATO">
-              <PropertyRef Name="CONTRATO_ID" />
-            </Principal>
-            <Dependent Role="SER_ADICIONAL">
-              <PropertyRef Name="CONTRATO_CONTRATO_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ENCARGADO_CURSO_FK">
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
           <End Role="ENCARGADO" Type="Self.ENCARGADO" Multiplicity="*" />
@@ -970,7 +1052,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="TOUR_DESTINO_FK">
+        <Association Name="TOUR_DESTINOS_FK">
           <End Role="DESTINO" Type="Self.DESTINO" Multiplicity="1" />
           <End Role="TOUR" Type="Self.TOUR" Multiplicity="*" />
           <ReferentialConstraint>
@@ -995,7 +1077,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PAGO_ENCARGADO_FK">
-          <End Role="ENCARGADO" Type="Self.ENCARGADO" Multiplicity="1" />
+          <End Role="ENCARGADO" Type="Self.ENCARGADO" Multiplicity="0..1" />
           <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ENCARGADO">
@@ -1003,18 +1085,6 @@
             </Principal>
             <Dependent Role="PAGO">
               <PropertyRef Name="ENCARGADO_ENCARGADO_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="TOUR_POLIZA_FK">
-          <End Role="POLIZA" Type="Self.POLIZA" Multiplicity="1" />
-          <End Role="TOUR" Type="Self.TOUR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="POLIZA">
-              <PropertyRef Name="POLIZA_ID" />
-            </Principal>
-            <Dependent Role="TOUR">
-              <PropertyRef Name="POLIZA_POLIZA_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1034,9 +1104,9 @@
           <EntitySet Name="ROLES" EntityType="Self.ROLES" />
           <EntitySet Name="SER_ADICIONAL" EntityType="Self.SER_ADICIONAL" />
           <EntitySet Name="TOUR" EntityType="Self.TOUR" />
-          <AssociationSet Name="ACTIVIDAD_TOUR_TOUR_FK" Association="Self.ACTIVIDAD_TOUR_TOUR_FK">
-            <End Role="TOUR" EntitySet="TOUR" />
+          <AssociationSet Name="CONTRATO_ACTIVIDAD_TOUR_FK" Association="Self.CONTRATO_ACTIVIDAD_TOUR_FK">
             <End Role="ACTIVIDAD_TOUR" EntitySet="ACTIVIDAD_TOUR" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
           </AssociationSet>
           <AssociationSet Name="ADMINISTRADOR_ROLES_FK" Association="Self.ADMINISTRADOR_ROLES_FK">
             <End Role="ROLES" EntitySet="ROLES" />
@@ -1074,6 +1144,22 @@
             <End Role="COLEGIO" EntitySet="COLEGIO" />
             <End Role="CURSO" EntitySet="CURSO" />
           </AssociationSet>
+          <AssociationSet Name="CONTRATO_DESTINO_FK" Association="Self.CONTRATO_DESTINO_FK">
+            <End Role="DESTINO" EntitySet="DESTINO" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_ENCARGADO_FK" Association="Self.CONTRATO_ENCARGADO_FK">
+            <End Role="ENCARGADO" EntitySet="ENCARGADO" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_POLIZA_FK" Association="Self.CONTRATO_POLIZA_FK">
+            <End Role="POLIZA" EntitySet="POLIZA" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_SERVICIO_FK" Association="Self.CONTRATO_SERVICIO_FK">
+            <End Role="SER_ADICIONAL" EntitySet="SER_ADICIONAL" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
           <AssociationSet Name="CONTRATO_TOUR_FK" Association="Self.CONTRATO_TOUR_FK">
             <End Role="TOUR" EntitySet="TOUR" />
             <End Role="CONTRATO" EntitySet="CONTRATO" />
@@ -1082,15 +1168,11 @@
             <End Role="CONTRATO" EntitySet="CONTRATO" />
             <End Role="PAGO" EntitySet="PAGO" />
           </AssociationSet>
-          <AssociationSet Name="SER_ADICIONAL_CONTRATO_FK" Association="Self.SER_ADICIONAL_CONTRATO_FK">
-            <End Role="CONTRATO" EntitySet="CONTRATO" />
-            <End Role="SER_ADICIONAL" EntitySet="SER_ADICIONAL" />
-          </AssociationSet>
           <AssociationSet Name="ENCARGADO_CURSO_FK" Association="Self.ENCARGADO_CURSO_FK">
             <End Role="CURSO" EntitySet="CURSO" />
             <End Role="ENCARGADO" EntitySet="ENCARGADO" />
           </AssociationSet>
-          <AssociationSet Name="TOUR_DESTINO_FK" Association="Self.TOUR_DESTINO_FK">
+          <AssociationSet Name="TOUR_DESTINOS_FK" Association="Self.TOUR_DESTINOS_FK">
             <End Role="DESTINO" EntitySet="DESTINO" />
             <End Role="TOUR" EntitySet="TOUR" />
           </AssociationSet>
@@ -1102,11 +1184,7 @@
             <End Role="ENCARGADO" EntitySet="ENCARGADO" />
             <End Role="PAGO" EntitySet="PAGO" />
           </AssociationSet>
-          <AssociationSet Name="TOUR_POLIZA_FK" Association="Self.TOUR_POLIZA_FK">
-            <End Role="POLIZA" EntitySet="POLIZA" />
-            <End Role="TOUR" EntitySet="TOUR" />
-          </AssociationSet>
-          <FunctionImport Name="AgregarApoderado">
+          <FunctionImport Name="InsertarApoderado">
             <Parameter Name="A_APODERADO_ID" Mode="In" Type="Decimal" />
             <Parameter Name="A_USERNAME" Mode="In" Type="String" />
             <Parameter Name="A_EMAIL" Mode="In" Type="String" />
@@ -1154,7 +1232,6 @@
                 <ScalarProperty Name="ACTIVIDAD_ID" ColumnName="ACTIVIDAD_ID" />
                 <ScalarProperty Name="NOMBRE_ACTIVIDAD" ColumnName="NOMBRE_ACTIVIDAD" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="TOUR_TOUR_ID" ColumnName="TOUR_TOUR_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1193,6 +1270,7 @@
                 <ScalarProperty Name="FECH_NAC" ColumnName="FECH_NAC" />
                 <ScalarProperty Name="APODERADO_APODERADO_ID" ColumnName="APODERADO_APODERADO_ID" />
                 <ScalarProperty Name="CURSO_ID_CURSO" ColumnName="CURSO_ID_CURSO" />
+                <ScalarProperty Name="DEUDA" ColumnName="DEUDA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1232,6 +1310,11 @@
                 <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
                 <ScalarProperty Name="TOUR_TOUR_ID" ColumnName="TOUR_TOUR_ID" />
                 <ScalarProperty Name="AGENTE_AGENTE_ID" ColumnName="AGENTE_AGENTE_ID" />
+                <ScalarProperty Name="DESTINO_DESTINO_ID" ColumnName="DESTINO_DESTINO_ID" />
+                <ScalarProperty Name="POLIZA_POLIZA_ID" ColumnName="POLIZA_POLIZA_ID" />
+                <ScalarProperty Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" ColumnName="ACTIVIDAD_TOUR_ACTIVIDAD_ID" />
+                <ScalarProperty Name="ENCARGADO_ENCARGADO_ID" ColumnName="ENCARGADO_ENCARGADO_ID" />
+                <ScalarProperty Name="SER_ADICIONAL_ID" ColumnName="SER_ADICIONAL_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1279,6 +1362,7 @@
                 <ScalarProperty Name="CONTRATO_CONTRATO_ID" ColumnName="CONTRATO_CONTRATO_ID" />
                 <ScalarProperty Name="APODERADO_APODERADO_ID" ColumnName="APODERADO_APODERADO_ID" />
                 <ScalarProperty Name="ENCARGADO_ENCARGADO_ID" ColumnName="ENCARGADO_ENCARGADO_ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1290,6 +1374,7 @@
                 <ScalarProperty Name="SUMA_ASEGURADA" ColumnName="SUMA_ASEGURADA" />
                 <ScalarProperty Name="PRIMA" ColumnName="PRIMA" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE_POLIZA" ColumnName="NOMBRE_POLIZA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1308,7 +1393,6 @@
                 <ScalarProperty Name="NOMBRE_SER" ColumnName="NOMBRE_SER" />
                 <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
                 <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-                <ScalarProperty Name="CONTRATO_CONTRATO_ID" ColumnName="CONTRATO_CONTRATO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1320,12 +1404,11 @@
                 <ScalarProperty Name="PRECIO_BASE" ColumnName="PRECIO_BASE" />
                 <ScalarProperty Name="DIAS" ColumnName="DIAS" />
                 <ScalarProperty Name="PRECIO_TOTAL" ColumnName="PRECIO_TOTAL" />
-                <ScalarProperty Name="POLIZA_POLIZA_ID" ColumnName="POLIZA_POLIZA_ID" />
                 <ScalarProperty Name="DESTINO_DESTINO_ID" ColumnName="DESTINO_DESTINO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="AgregarApoderado" FunctionName="Model.Store.PKG_APODERADO_AGREGAR_APODERADO" />
+          <FunctionImportMapping FunctionImportName="InsertarApoderado" FunctionName="Model.Store.PKG_APODERADO_AGREGAR_APODERADO" />
           <FunctionImportMapping FunctionImportName="AgregarAlumno" FunctionName="Model.Store.PKG_ALUMNO_AGREGAR_ALUMNO" />
           <FunctionImportMapping FunctionImportName="InsertarEncargado" FunctionName="Model.Store.PKG_ENCARGADO_AGREGAR_ENCARGADO" />
         </EntityContainerMapping>

@@ -16,6 +16,7 @@ namespace DALC
     {
         public DESTINO()
         {
+            this.CONTRATO = new HashSet<CONTRATO>();
             this.TOUR = new HashSet<TOUR>();
         }
     
@@ -23,6 +24,7 @@ namespace DALC
         public string CIUDAD { get; set; }
         public string PAIS { get; set; }
     
+        public virtual ICollection<CONTRATO> CONTRATO { get; set; }
         public virtual ICollection<TOUR> TOUR { get; set; }
     }
 }

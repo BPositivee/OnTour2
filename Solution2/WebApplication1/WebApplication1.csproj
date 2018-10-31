@@ -49,6 +49,10 @@
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -108,12 +112,15 @@
     <Content Include="AdministradorTemp.aspx" />
     <Content Include="AgenteTemp.aspx" />
     <Content Include="ApoderadoTemp.aspx" />
+    <Content Include="ArmarContrato.aspx" />
     <Content Include="EncargadoTemp.aspx" />
     <Content Include="Estilos\estiloRegistro.css" />
     <Content Include="images\banner.jpg" />
     <Content Include="images\cartagena.jpeg" />
     <Content Include="images\lisboa.jpg" />
     <Content Include="images\london.jpg" />
+    <Content Include="images\opatija.jpg" />
+    <Content Include="images\rovinj.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -213,6 +220,13 @@
     <Compile Include="ApoderadoTemp.aspx.designer.cs">
       <DependentUpon>ApoderadoTemp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ArmarContrato.aspx.cs">
+      <DependentUpon>ArmarContrato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArmarContrato.aspx.designer.cs">
+      <DependentUpon>ArmarContrato.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EncargadoTemp.aspx.cs">
       <DependentUpon>EncargadoTemp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -258,7 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DALC\DALC.csproj">
-      <Project>{b5c50366-bb17-4801-959f-f0a837beca8a}</Project>
+      <Project>{23b98cf0-6ce9-460d-8c2f-08c29b89ea47}</Project>
       <Name>DALC</Name>
     </ProjectReference>
     <ProjectReference Include="..\Negocio\Negocio.csproj">

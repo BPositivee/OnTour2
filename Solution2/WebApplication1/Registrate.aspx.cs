@@ -17,7 +17,9 @@ namespace WebApplication1
         {
             if (!IsPostBack)
             {
+
                 CargarDdlColegio();
+
             }
         }
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -36,7 +38,13 @@ namespace WebApplication1
 
 
         }
+        public void cargarDdlCurso() {
 
+            var c = from i in Conexion.Entidades.CURSO
+                    select new { i.NOMBRE_CURSO };
+            ddlCurso.DataSource = c.ToList();
+            ddlCurso.DataBind();
+        }
         public void CargarDdlColegio()
         {
 
@@ -102,6 +110,8 @@ namespace WebApplication1
                 lblMensaje.Visible = true;
 
 
+            
+
             }
 
         }
@@ -138,12 +148,50 @@ namespace WebApplication1
 
         protected void btnGuardarColegio_Click(object sender, EventArgs e)
         {
+            var c = (from x in Conexion.Entidades.COLEGIO select x.COLEGIO_ID).Max();
+            decimal colegio_id = c + 1;
+            string nombreColegio = tbxNombreColegio.Text.ToUpper();
+            string direccion = tbxDireccion.Text.ToUpper();
+            string telefono = tbxTelefonoColegio.Text.ToUpper();
+            COLEGIO colegio = new COLEGIO();
+
+            colegio.COLEGIO_ID = colegio_id;
+            colegio.NOMBRE_COLEGIO = nombreColegio;
+            colegio.DIRECCION = direccion;
+            colegio.TELEFONO = telefono;
+            Conexion.Entidades.COLEGIO.Add(colegio);
+            Conexion.Entidades.SaveChanges();
+            lblMensajeC.Text = "Colegio agregado Con Exito";
+            lblMensaje.Visible = true;
+            CargarDdlColegio();
+        
+
+            RadioButtonList1.SelectedValue = "Si";
 
         }
 
         protected void btnGuardarCurso_Click(object sender, EventArgs e)
         {
+            var cur = (from x in Conexion.Entidades.CURSO select x.ID_CURSO).Max();
+            decimal curso_id = cur + 1;
+            string nombreCurso = tbxNombreCurso.Text.ToUpper();
+            string nombreColegio = ddlColegio.SelectedItem.ToString();
+            var cuId = (from j in Conexion.Entidades.COLEGIO
+                        where j.NOMBRE_COLEGIO == nombreColegio 
+                        select j.COLEGIO_ID ).First();
+            CURSO curso = new CURSO();
 
+            curso.ID_CURSO = curso_id;
+            curso.NOMBRE_CURSO = nombreCurso;
+            curso.COLEGIO_COLEGIO_ID = cuId;
+            Conexion.Entidades.CURSO.Add(curso);
+            Conexion.Entidades.SaveChanges();
+            lblMensajeCu.Text = "Curso agregado con exito";
+            lblMensajeCu.Visible = true;
+            guardarDdlCurso();
+            ddlCurso.Enabled = true;
+            
+            
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -172,17 +220,20 @@ namespace WebApplication1
                 btnGuardarColegio.Visible = true;
                 lblMensajeC.Enabled = true;
                 lblMensajeC.Visible = true;
+            
 
-                lblNombreCurso.Enabled = true;
-                lblNombreCurso.Visible = true;
-                tbxNombreCurso.Enabled = true;
-                tbxNombreCurso.Visible = true;
-                rfvNombreCurso.Enabled = true;
-                rfvNombreCurso.Visible = true;
-                btnGuardarCurso.Enabled = true;
-                btnGuardarCurso.Visible = true;
-                lblMensajeCu.Enabled = true;
-                lblMensajeCu.Visible = true;
+                lblNombreCurso.Enabled = false;
+                lblNombreCurso.Visible = false;
+                tbxNombreCurso.Enabled = false;
+                tbxNombreCurso.Visible = false;
+                rfvNombreCurso.Enabled = false;
+                rfvNombreCurso.Visible = false;
+                btnGuardarCurso.Enabled = false;
+                btnGuardarCurso.Visible = false;
+                lblMensajeCu.Enabled = false;
+                lblMensajeCu.Visible = false;
+                ddlCurso.Enabled = false;
+                rfvCurso.Enabled = false;
 
 
 
@@ -212,7 +263,7 @@ namespace WebApplication1
                 btnGuardarColegio.Visible = false;
                 lblMensajeC.Enabled = false;
                 lblMensajeC.Visible = false;
-
+                ddlCurso.Enabled = true;
 
 
             }
@@ -322,7 +373,22 @@ namespace WebApplication1
 
             }
         }
+        public void guardarDdlCurso (){
 
+            string nombreCol = ddlColegio.SelectedValue;
+
+            var col = (from x in Conexion.Entidades.COLEGIO
+                       where x.NOMBRE_COLEGIO == nombreCol
+                       select x.COLEGIO_ID).First();
+
+            var cur = (from c in Conexion.Entidades.CURSO
+                       where c.COLEGIO_COLEGIO_ID == col
+                       select new { c.NOMBRE_CURSO });
+
+            ddlCurso.DataSource = cur.ToList();
+            ddlCurso.DataBind();
+
+        }
         protected void ddlColegio_SelectedIndexChanged(object sender, EventArgs e)
         {
             string nombreCol = ddlColegio.SelectedValue;

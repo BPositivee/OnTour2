@@ -16,6 +16,7 @@ namespace DALC
     {
         public ENCARGADO()
         {
+            this.CONTRATO = new HashSet<CONTRATO>();
             this.PAGO = new HashSet<PAGO>();
         }
     
@@ -32,6 +33,7 @@ namespace DALC
         public decimal CURSO_ID_CURSO { get; set; }
     
         public virtual AGENTE AGENTE { get; set; }
+        public virtual ICollection<CONTRATO> CONTRATO { get; set; }
         public virtual CURSO CURSO { get; set; }
         public virtual ROLES ROLES { get; set; }
         public virtual ICollection<PAGO> PAGO { get; set; }

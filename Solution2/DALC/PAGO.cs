@@ -18,8 +18,9 @@ namespace DALC
         public System.DateTime FECHA_PAGO { get; set; }
         public decimal MONTO_PAGO { get; set; }
         public decimal CONTRATO_CONTRATO_ID { get; set; }
-        public decimal APODERADO_APODERADO_ID { get; set; }
-        public decimal ENCARGADO_ENCARGADO_ID { get; set; }
+        public Nullable<decimal> APODERADO_APODERADO_ID { get; set; }
+        public Nullable<decimal> ENCARGADO_ENCARGADO_ID { get; set; }
+        public string DESCRIPCION { get; set; }
     
         public virtual APODERADO APODERADO { get; set; }
         public virtual CONTRATO CONTRATO { get; set; }

@@ -44,7 +44,7 @@ namespace DALC
         public DbSet<SER_ADICIONAL> SER_ADICIONAL { get; set; }
         public DbSet<TOUR> TOUR { get; set; }
     
-        public virtual int AgregarApoderado(Nullable<decimal> a_APODERADO_ID, string a_USERNAME, string a_EMAIL, string a_AP_PATERNO, string a_AP_MATERNO, string a_NOMBRE, string a_TELEFONO, string a_CELULAR, string a_PASSWORD, Nullable<decimal> a_ROLES_ROLES_ID)
+        public virtual int InsertarApoderado(Nullable<decimal> a_APODERADO_ID, string a_USERNAME, string a_EMAIL, string a_AP_PATERNO, string a_AP_MATERNO, string a_NOMBRE, string a_TELEFONO, string a_CELULAR, string a_PASSWORD, Nullable<decimal> a_ROLES_ROLES_ID)
         {
             var a_APODERADO_IDParameter = a_APODERADO_ID.HasValue ?
                 new ObjectParameter("A_APODERADO_ID", a_APODERADO_ID) :
@@ -86,7 +86,7 @@ namespace DALC
                 new ObjectParameter("A_ROLES_ROLES_ID", a_ROLES_ROLES_ID) :
                 new ObjectParameter("A_ROLES_ROLES_ID", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarApoderado", a_APODERADO_IDParameter, a_USERNAMEParameter, a_EMAILParameter, a_AP_PATERNOParameter, a_AP_MATERNOParameter, a_NOMBREParameter, a_TELEFONOParameter, a_CELULARParameter, a_PASSWORDParameter, a_ROLES_ROLES_IDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertarApoderado", a_APODERADO_IDParameter, a_USERNAMEParameter, a_EMAILParameter, a_AP_PATERNOParameter, a_AP_MATERNOParameter, a_NOMBREParameter, a_TELEFONOParameter, a_CELULARParameter, a_PASSWORDParameter, a_ROLES_ROLES_IDParameter);
         }
     
         public virtual int AgregarAlumno(Nullable<decimal> a_ALUMNO_ID, string a_AP_PATERNO, string a_AP_MATERNO, string a_NOMBRE, string a_RUT_ALUMNO, Nullable<System.DateTime> a_FECHA_NAC, Nullable<decimal> a_APODERADO_APODERADO_ID, Nullable<decimal> a_CURSO_ID_CURSO)

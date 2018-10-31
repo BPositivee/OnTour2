@@ -17,7 +17,7 @@ namespace WebApplication1
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            string user = txtUsuario.Text;
+            string user = txtUsuario.Text.ToUpper();
             string pass = txtPassword.Text;
 
             var consulta = (from a in Conexion.Entidades.APODERADO
@@ -55,6 +55,7 @@ namespace WebApplication1
 
                     foreach (var adm in consulta2)
                     {
+
                         Session["user"] = adm.USERNAME;
                         Response.Redirect("AdministradorTemp.aspx");
                     }
@@ -80,6 +81,7 @@ namespace WebApplication1
                     {
 
                         Session["user"] = en.USERNAME;
+                        Session["id"] = en.ENCARGADO_ID;
                         Response.Redirect("EncargadoTemp.aspx");
 
                     }

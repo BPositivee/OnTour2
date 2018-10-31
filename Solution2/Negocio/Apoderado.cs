@@ -47,7 +47,7 @@ namespace Negocio
         public void InsertarApoderado(decimal id, string username, string email, string ap_paterno, string ap_materno, 
                                         string nombre, string telefono, string celular, string password, decimal rolId)
         {
-            Conexion.Entidades.AgregarApoderado(id, username, email, ap_paterno,
+            Conexion.Entidades.InsertarApoderado(id, username, email, ap_paterno,
                       ap_materno, nombre, telefono, celular, password, rolId);
             Conexion.Entidades.SaveChanges();
 

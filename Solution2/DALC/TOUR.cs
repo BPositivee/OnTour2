@@ -16,7 +16,6 @@ namespace DALC
     {
         public TOUR()
         {
-            this.ACTIVIDAD_TOUR = new HashSet<ACTIVIDAD_TOUR>();
             this.CONTRATO = new HashSet<CONTRATO>();
         }
     
@@ -25,12 +24,9 @@ namespace DALC
         public decimal PRECIO_BASE { get; set; }
         public decimal DIAS { get; set; }
         public decimal PRECIO_TOTAL { get; set; }
-        public decimal POLIZA_POLIZA_ID { get; set; }
         public decimal DESTINO_DESTINO_ID { get; set; }
     
-        public virtual ICollection<ACTIVIDAD_TOUR> ACTIVIDAD_TOUR { get; set; }
         public virtual ICollection<CONTRATO> CONTRATO { get; set; }
         public virtual DESTINO DESTINO { get; set; }
-        public virtual POLIZA POLIZA { get; set; }
     }
 }

@@ -14,12 +14,16 @@ namespace DALC
     
     public partial class SER_ADICIONAL
     {
+        public SER_ADICIONAL()
+        {
+            this.CONTRATO = new HashSet<CONTRATO>();
+        }
+    
         public decimal SER_ID { get; set; }
         public string NOMBRE_SER { get; set; }
         public decimal PRECIO { get; set; }
         public string TIPO { get; set; }
-        public decimal CONTRATO_CONTRATO_ID { get; set; }
     
-        public virtual CONTRATO CONTRATO { get; set; }
+        public virtual ICollection<CONTRATO> CONTRATO { get; set; }
     }
 }
