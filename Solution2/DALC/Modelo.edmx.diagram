@@ -4,23 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d95a0e8d510c4a96a0419ad52d96c2a3" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.ACTIVIDAD_TOUR" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ADMINISTRADOR" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.AGENTE" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ALUMNO" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.APODERADO" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.COLEGIO" Width="1.5" PointX="3.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.CONTRATO" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.CURSO" Width="1.5" PointX="6" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DESTINO" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ENCARGADO" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PAGO" Width="1.5" PointX="10.5" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.POLIZA" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ROLES" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.SER_ADICIONAL" Width="1.5" PointX="3" PointY="26.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TOUR" Width="1.5" PointX="3" PointY="29.125" IsExpanded="true" />
-        <AssociationConnector Association="Model.CONTRATO_ACTIVIDAD_TOUR_FK" ManuallyRouted="false" />
+      <Diagram DiagramId="c1d197c476094ca9870efda4ef2a2f69" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.ACTIVIDAD_TOUR" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ADMINISTRADOR" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AGENTE" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ALUMNO" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.APODERADO" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COLEGIO" Width="1.5" PointX="3.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CONTRATO" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CURSO" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DESTINO" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ENCARGADO" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PAGO" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.POLIZA" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ROLES" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SER_ADICIONAL" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TOUR" Width="1.5" PointX="3" PointY="24.625" IsExpanded="true" />
         <AssociationConnector Association="Model.ADMINISTRADOR_ROLES_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.AGENTE_ROLES_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.CONTRATO_AGENTE_FK" ManuallyRouted="false" />

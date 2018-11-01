@@ -138,10 +138,8 @@
                 <tr>
                     <td>Servicio Adicional</td>
                     <td class="auto-style1">
-                        <asp:CheckBoxList ID="ChkServicio" runat="server" DataSourceID="EntityDataSource1" DataTextField="NOMBRE_SER" DataValueField="SER_ID">
-                        </asp:CheckBoxList>
-                        <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=Entities" DefaultContainerName="Entities" EnableFlattening="False" EntitySetName="SER_ADICIONAL" Select="it.[NOMBRE_SER], it.[SER_ID], it.[PRECIO]">
-                        </asp:EntityDataSource>
+                        <asp:DropDownList ID="DdlServicio" runat="server" class="btn btn-primary dropdown-toggle" AutoPostBack="True" OnSelectedIndexChanged="DdlServicio_SelectedIndexChanged">
+                        </asp:DropDownList>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -157,7 +155,9 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td>
+                        <asp:Label ID="lblEstado" runat="server" Text=""></asp:Label>
+                    </td>
                     <td class="auto-style1"></td>
 
                     <td>

@@ -28,11 +28,9 @@ namespace DALC
         public decimal AGENTE_AGENTE_ID { get; set; }
         public decimal DESTINO_DESTINO_ID { get; set; }
         public decimal POLIZA_POLIZA_ID { get; set; }
-        public decimal ACTIVIDAD_TOUR_ACTIVIDAD_ID { get; set; }
         public decimal ENCARGADO_ENCARGADO_ID { get; set; }
         public decimal SER_ADICIONAL_ID { get; set; }
     
-        public virtual ACTIVIDAD_TOUR ACTIVIDAD_TOUR { get; set; }
         public virtual AGENTE AGENTE { get; set; }
         public virtual DESTINO DESTINO { get; set; }
         public virtual ENCARGADO ENCARGADO { get; set; }

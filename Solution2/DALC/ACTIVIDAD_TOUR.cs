@@ -14,15 +14,8 @@ namespace DALC
     
     public partial class ACTIVIDAD_TOUR
     {
-        public ACTIVIDAD_TOUR()
-        {
-            this.CONTRATO = new HashSet<CONTRATO>();
-        }
-    
         public decimal ACTIVIDAD_ID { get; set; }
         public string NOMBRE_ACTIVIDAD { get; set; }
         public string DESCRIPCION { get; set; }
-    
-        public virtual ICollection<CONTRATO> CONTRATO { get; set; }
     }
 }

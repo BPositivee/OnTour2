@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using DALC;
 namespace WebApplication1
 {
     public partial class ArmarContrato : System.Web.UI.Page
@@ -21,7 +22,8 @@ namespace WebApplication1
                 CargarDdlColegio();
                 CargarDdlDestino();
                 CargarDdlSeguro();
-                lblSubTotal.Text = "MAMAMA CAMBIA";
+                CargarDDlServicio();
+               
             }
 
             String user = Session["user"].ToString();
@@ -32,7 +34,86 @@ namespace WebApplication1
 
         protected void btnRegistrarContrato_Click(object sender, EventArgs e)
         {
+           
+            var conId = (from p in Conexion.Entidades.CONTRATO select p.CONTRATO_ID).Max();
+            decimal contrato_id = conId + 1; //contratoID
 
+            DateTime fechaViaje = DateTime.Parse (tbxFechaViaje.Text);   //fecha
+
+            string nombreColegio = DdlColegio.SelectedValue; //nombre del colegio
+
+            decimal subTotal = ValorSeguro() + ValorTour();//subtotal
+
+            string nombreSer = DdlServicio.SelectedValue;
+            var ser_id = (from a in Conexion.Entidades.SER_ADICIONAL
+                          where a.NOMBRE_SER == nombreSer
+                          select a.SER_ID).First();
+            decimal servicio_id = ser_id; //servicio adicional
+            var ser = (from x in Conexion.Entidades.SER_ADICIONAL
+                       where x.NOMBRE_SER == nombreSer
+                       select x.PRECIO).First();
+            decimal valTotal = ser + ValorSeguro() + ValorTour();//total
+
+
+            string nombreTour = DdlTour.SelectedValue;
+            var tou = (from y in Conexion.Entidades.TOUR
+                       where y.NOMBRE_TOURS == nombreTour
+                       select y.TOUR_ID).First();
+            decimal tour_id = tou;//tour id 
+
+
+            String encargado_id = Session["id"].ToString();  //encargado id 
+
+
+            decimal aux_id = Decimal.Parse(encargado_id);
+            var ag_id = (from z in Conexion.Entidades.ENCARGADO
+                         where z.ENCARGADO_ID == aux_id
+                         select z.AGENTE_AGENTE_ID).First();
+            decimal agente_id = ag_id;  //agente_id
+        
+            string nombreDestino = DdlDestino.SelectedValue;
+            var des = (from i in Conexion.Entidades.DESTINO
+                       where i.PAIS == nombreDestino
+                       select i.DESTINO_ID).First();
+            decimal destino_id = des;     //destino id 
+
+           
+            string nombreSeguro = DdlSeguro.SelectedValue;
+            var seg = (from j in Conexion.Entidades.POLIZA
+                       where j.NOMBRE_POLIZA == nombreSeguro
+                       select j.POLIZA_ID).First();
+            decimal poliza_id = seg; //poliza id 
+                                     // AGREGAR
+            CONTRATO contra = new CONTRATO();
+            contra.CONTRATO_ID = contrato_id;
+            contra.FECHA = fechaViaje;
+            contra.NOMBRE_COLEGIO = nombreColegio;
+            contra.SUBTOTAL = subTotal;
+            contra.TOTAL = valTotal;
+            contra.TOUR_TOUR_ID = tour_id;
+            contra.AGENTE_AGENTE_ID = agente_id;
+            contra.DESTINO_DESTINO_ID = destino_id;
+            contra.POLIZA_POLIZA_ID = poliza_id;
+            contra.ENCARGADO_ENCARGADO_ID = aux_id;
+            contra.SER_ADICIONAL_ID = servicio_id;
+
+            Conexion.Entidades.CONTRATO.Add(contra);
+            Conexion.Entidades.SaveChanges();
+            lblEstado.Text = "Felicidades tu contrato se ha guardado correctamente";
+
+            //hacer prorrateo 
+            var en = (from x in Conexion.Entidades.ENCARGADO
+                      where x.ENCARGADO_ID == aux_id
+                      select x.CURSO_ID_CURSO).First();
+
+            var al = (from k in Conexion.Entidades.ALUMNO
+                      where k.CURSO_ID_CURSO == en 
+                      select k);
+
+            foreach (var p in al) {
+                p.DEUDA = valTotal;
+            }
+            Conexion.Entidades.SaveChanges();
         }
 
         public void CargarDdlColegio() {
@@ -99,7 +180,20 @@ namespace WebApplication1
 
 
         }
+        public void CargarDDlServicio() {
 
+            var ser = (from x in Conexion.Entidades.SER_ADICIONAL
+                       select x.NOMBRE_SER);
+
+
+            DdlServicio.DataSource = ser.ToList();
+            DdlServicio.DataBind();
+            DdlServicio.Items.Insert(0, "SELECIONE");
+
+
+
+
+        }
         protected void DdlSeguro_SelectedIndexChanged(object sender, EventArgs e)
         {
             string nombrePol = DdlSeguro.SelectedValue;
@@ -109,13 +203,18 @@ namespace WebApplication1
                       select x.DESCRIPCION).First();
 
 
-           lblInfoSeguro.Text = ser;
+
+            decimal valorSubTotal = ValorSeguro() + ValorTour();
+            lblInfoSeguro.Text = ser;
+            lblSubTotal.Text = valorSubTotal.ToString();
+
+
+           
         }
 
         protected void DdlTour_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            // decimal valorSubTotal = ValorSeguro() + ValorTour();
 
             string nombreTour = DdlTour.SelectedValue;
             var val = (from x in Conexion.Entidades.TOUR
@@ -123,10 +222,6 @@ namespace WebApplication1
                        select x.PRECIO_TOTAL).First();
 
            tbxPrecioTour.Text = val.ToString();
-
-
-
-
 
 
 
@@ -158,6 +253,16 @@ namespace WebApplication1
 
 
 
+        }
+
+        protected void DdlServicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string nombreSer = DdlServicio.SelectedValue;
+            var ser = (from x in Conexion.Entidades.SER_ADICIONAL
+                      where x.NOMBRE_SER == nombreSer
+                      select x.PRECIO).First();
+            decimal valTotal = ser + ValorSeguro() + ValorTour();
+            lblTotal.Text = valTotal.ToString();
         }
     }
 }

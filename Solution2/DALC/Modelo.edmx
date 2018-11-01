@@ -86,7 +86,6 @@
           <Property Name="AGENTE_AGENTE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESTINO_DESTINO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="POLIZA_POLIZA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ENCARGADO_ENCARGADO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="SER_ADICIONAL_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
@@ -229,18 +228,6 @@
             </Principal>
             <Dependent Role="APODERADO">
               <PropertyRef Name="ROLES_ROLES_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CONTRATO_ACTIVIDAD_TOUR_FK">
-          <End Role="ACTIVIDAD_TOUR" Type="Self.ACTIVIDAD_TOUR" Multiplicity="1" />
-          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ACTIVIDAD_TOUR">
-              <PropertyRef Name="ACTIVIDAD_ID" />
-            </Principal>
-            <Dependent Role="CONTRATO">
-              <PropertyRef Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -575,10 +562,6 @@
             <End Role="ROLES" EntitySet="ROLES" />
             <End Role="APODERADO" EntitySet="APODERADO" />
           </AssociationSet>
-          <AssociationSet Name="CONTRATO_ACTIVIDAD_TOUR_FK" Association="Self.CONTRATO_ACTIVIDAD_TOUR_FK">
-            <End Role="ACTIVIDAD_TOUR" EntitySet="ACTIVIDAD_TOUR" />
-            <End Role="CONTRATO" EntitySet="CONTRATO" />
-          </AssociationSet>
           <AssociationSet Name="CONTRATO_AGENTE_FK" Association="Self.CONTRATO_AGENTE_FK">
             <End Role="AGENTE" EntitySet="AGENTE" />
             <End Role="CONTRATO" EntitySet="CONTRATO" />
@@ -648,7 +631,6 @@
           <Property Name="ACTIVIDAD_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE_ACTIVIDAD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_ACTIVIDAD_TOUR_FK" FromRole="ACTIVIDAD_TOUR" ToRole="CONTRATO" />
         </EntityType>
         <EntityType Name="ADMINISTRADOR">
           <Key>
@@ -733,10 +715,8 @@
           <Property Name="AGENTE_AGENTE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESTINO_DESTINO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="POLIZA_POLIZA_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ENCARGADO_ENCARGADO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="SER_ADICIONAL_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="ACTIVIDAD_TOUR" Relationship="Self.CONTRATO_ACTIVIDAD_TOUR_FK" FromRole="CONTRATO" ToRole="ACTIVIDAD_TOUR" />
           <NavigationProperty Name="AGENTE" Relationship="Self.CONTRATO_AGENTE_FK" FromRole="CONTRATO" ToRole="AGENTE" />
           <NavigationProperty Name="DESTINO" Relationship="Self.CONTRATO_DESTINO_FK" FromRole="CONTRATO" ToRole="DESTINO" />
           <NavigationProperty Name="ENCARGADO" Relationship="Self.CONTRATO_ENCARGADO_FK" FromRole="CONTRATO" ToRole="ENCARGADO" />
@@ -848,18 +828,6 @@
           <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_TOUR_FK" FromRole="TOUR" ToRole="CONTRATO" />
           <NavigationProperty Name="DESTINO" Relationship="Self.TOUR_DESTINOS_FK" FromRole="TOUR" ToRole="DESTINO" />
         </EntityType>
-        <Association Name="CONTRATO_ACTIVIDAD_TOUR_FK">
-          <End Role="ACTIVIDAD_TOUR" Type="Self.ACTIVIDAD_TOUR" Multiplicity="1" />
-          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ACTIVIDAD_TOUR">
-              <PropertyRef Name="ACTIVIDAD_ID" />
-            </Principal>
-            <Dependent Role="CONTRATO">
-              <PropertyRef Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ADMINISTRADOR_ROLES_FK">
           <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
           <End Role="ADMINISTRADOR" Type="Self.ADMINISTRADOR" Multiplicity="*" />
@@ -1104,10 +1072,6 @@
           <EntitySet Name="ROLES" EntityType="Self.ROLES" />
           <EntitySet Name="SER_ADICIONAL" EntityType="Self.SER_ADICIONAL" />
           <EntitySet Name="TOUR" EntityType="Self.TOUR" />
-          <AssociationSet Name="CONTRATO_ACTIVIDAD_TOUR_FK" Association="Self.CONTRATO_ACTIVIDAD_TOUR_FK">
-            <End Role="ACTIVIDAD_TOUR" EntitySet="ACTIVIDAD_TOUR" />
-            <End Role="CONTRATO" EntitySet="CONTRATO" />
-          </AssociationSet>
           <AssociationSet Name="ADMINISTRADOR_ROLES_FK" Association="Self.ADMINISTRADOR_ROLES_FK">
             <End Role="ROLES" EntitySet="ROLES" />
             <End Role="ADMINISTRADOR" EntitySet="ADMINISTRADOR" />
@@ -1184,6 +1148,16 @@
             <End Role="ENCARGADO" EntitySet="ENCARGADO" />
             <End Role="PAGO" EntitySet="PAGO" />
           </AssociationSet>
+          <FunctionImport Name="AgregarAlumno">
+            <Parameter Name="A_ALUMNO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="A_AP_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="A_AP_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="A_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="A_RUT_ALUMNO" Mode="In" Type="String" />
+            <Parameter Name="A_FECHA_NAC" Mode="In" Type="DateTime" />
+            <Parameter Name="A_APODERADO_APODERADO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="A_CURSO_ID_CURSO" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="InsertarApoderado">
             <Parameter Name="A_APODERADO_ID" Mode="In" Type="Decimal" />
             <Parameter Name="A_USERNAME" Mode="In" Type="String" />
@@ -1195,16 +1169,6 @@
             <Parameter Name="A_CELULAR" Mode="In" Type="String" />
             <Parameter Name="A_PASSWORD" Mode="In" Type="String" />
             <Parameter Name="A_ROLES_ROLES_ID" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="AgregarAlumno">
-            <Parameter Name="A_ALUMNO_ID" Mode="In" Type="Decimal" />
-            <Parameter Name="A_AP_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="A_AP_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="A_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="A_RUT_ALUMNO" Mode="In" Type="String" />
-            <Parameter Name="A_FECHA_NAC" Mode="In" Type="DateTime" />
-            <Parameter Name="A_APODERADO_APODERADO_ID" Mode="In" Type="Decimal" />
-            <Parameter Name="A_CURSO_ID_CURSO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="InsertarEncargado">
             <Parameter Name="E_ENCARGADO_ID" Mode="In" Type="Decimal" />
@@ -1312,7 +1276,6 @@
                 <ScalarProperty Name="AGENTE_AGENTE_ID" ColumnName="AGENTE_AGENTE_ID" />
                 <ScalarProperty Name="DESTINO_DESTINO_ID" ColumnName="DESTINO_DESTINO_ID" />
                 <ScalarProperty Name="POLIZA_POLIZA_ID" ColumnName="POLIZA_POLIZA_ID" />
-                <ScalarProperty Name="ACTIVIDAD_TOUR_ACTIVIDAD_ID" ColumnName="ACTIVIDAD_TOUR_ACTIVIDAD_ID" />
                 <ScalarProperty Name="ENCARGADO_ENCARGADO_ID" ColumnName="ENCARGADO_ENCARGADO_ID" />
                 <ScalarProperty Name="SER_ADICIONAL_ID" ColumnName="SER_ADICIONAL_ID" />
               </MappingFragment>
@@ -1408,8 +1371,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="InsertarApoderado" FunctionName="Model.Store.PKG_APODERADO_AGREGAR_APODERADO" />
           <FunctionImportMapping FunctionImportName="AgregarAlumno" FunctionName="Model.Store.PKG_ALUMNO_AGREGAR_ALUMNO" />
+          <FunctionImportMapping FunctionImportName="InsertarApoderado" FunctionName="Model.Store.PKG_APODERADO_AGREGAR_APODERADO" />
           <FunctionImportMapping FunctionImportName="InsertarEncargado" FunctionName="Model.Store.PKG_ENCARGADO_AGREGAR_ENCARGADO" />
         </EntityContainerMapping>
       </Mapping>
