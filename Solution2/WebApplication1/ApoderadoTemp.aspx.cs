@@ -25,15 +25,7 @@ namespace WebApplication1
             Response.Redirect("RegistroAlumnos.aspx");
         }
 
-        protected void RealizarPago_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void RevisarContrato_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -53,7 +45,9 @@ namespace WebApplication1
                             APELLIDOMATERNO = a.AP_MATERNO,
                             NOMBRE = a.NOMBRE,
                             RUT = a.RUT,
-                            FECHANACIMIENTO = a.FECH_NAC
+                            FECHANACIMIENTO = a.FECH_NAC,
+                            DEUDA = a.DEUDA
+                            
                         }
                         );
            
@@ -66,7 +60,14 @@ namespace WebApplication1
 
         }
 
-       
+        protected void RealizarPago_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("RealizarPago.aspx");
+        }
 
+        protected void RevisarContrato_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

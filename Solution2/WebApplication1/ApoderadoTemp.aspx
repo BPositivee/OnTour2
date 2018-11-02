@@ -106,8 +106,8 @@
                     <td>&nbsp;</td>
                     <td>
                         <asp:Button ID="btnRegistroAlumnos" runat="server" Text="Registrar Alumno" OnClick="btnRegistroAlumnos_Click" class="btn btn-outline-success"/>
-                        <asp:Button ID="RealizarPago" runat="server" Text="Realizar Pago" class="btn btn-outline-danger"/>
-                        <asp:Button ID="RevisarContrato" runat="server" Text="Revisar Contrato" class="btn btn-outline-info"/>
+                        <asp:Button ID="RealizarPago" runat="server" Text="Realizar Pago" class="btn btn-outline-danger" OnClick="RealizarPago_Click1"/>
+                        <asp:Button ID="RevisarContrato" runat="server" Text="Revisar Contrato" class="btn btn-outline-info" OnClick="RevisarContrato_Click"/>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
