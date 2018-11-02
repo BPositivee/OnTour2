@@ -30,9 +30,9 @@ namespace WebApplication1
             String id = Session["id"].ToString();
             decimal idApo = Decimal.Parse(id);
 
-
-
             ALUMNO al = new ALUMNO();
+
+
             var a = (from p in Conexion.Entidades.ALUMNO select p.ALUMNO_ID).Max();
             decimal idAlumno = a + 1;
             string nombre = tbxNombre.Text.ToUpper();
@@ -40,40 +40,104 @@ namespace WebApplication1
             string apellidoM = tbxApellidoM.Text.ToUpper();
             string rut = tbxRut.Text.ToUpper();
             string nombreCur = ddlCursos.SelectedItem.ToString();
-           
 
-            DateTime fecha_nac = DateTime.Parse(tbxFecha.Text).Date;
+
+            DateTime fecha_nac = DateTime.Parse(tbxFecha.Text);
 
 
 
             //sacar id por el nombre del curso
             var i = (from c in Conexion.Entidades.CURSO
                      where c.NOMBRE_CURSO == nombreCur
-                     select   c.ID_CURSO).First();
+                     select c.ID_CURSO).First();
 
 
-                al.CURSO_ID_CURSO = i;
-                al.ALUMNO_ID = idAlumno;
-                al.AP_PATERNO = apellidoP;
-                al.AP_MATERNO = apellidoM;
-                al.NOMBRE = nombre;
-                al.RUT = rut;
-                al.FECH_NAC = fecha_nac;
-                al.APODERADO_APODERADO_ID = idApo;
-                 al.DEUDA = 0;
-          
-          
+
+            //HACER ASIGNACION DE DEUDA JUNTO CON LA CREACION DEL ALUMNO
+            //OBTENER CANTIDAD DE CONTRATOS HECHOS POR EL ENCARGADO DE UN CURSO
+            var en = (from x in Conexion.Entidades.ENCARGADO
+                      where x.CURSO_ID_CURSO == i
+                      select x.CONTRATO).Count();
 
 
-            Conexion.Entidades.ALUMNO.Add(al);
-            Conexion.Entidades.SaveChanges();
-            Estado.Text = "Alumno Agregado";
-            Response.AddHeader("REFRESH", "3;URL=ApoderadoTemp.aspx");
+            var enId = (from x in Conexion.Entidades.ENCARGADO
+                        where x.CURSO_ID_CURSO == i
+                        select x.ENCARGADO_ID).First();
+
+
+        
+
+
+
+            var deuda = (from c in Conexion.Entidades.CONTRATO
+                         where c.ENCARGADO_ENCARGADO_ID == enId
+                         select c.TOTAL).FirstOrDefault();
+
+            switch (en)
+            {
+                case 0:
+
+                    al.CURSO_ID_CURSO = i;
+                    al.ALUMNO_ID = idAlumno;
+                    al.AP_PATERNO = apellidoP;
+                    al.AP_MATERNO = apellidoM;
+                    al.NOMBRE = nombre;
+                    al.RUT = rut;
+                    al.FECH_NAC = fecha_nac;
+                    al.APODERADO_APODERADO_ID = idApo;
+                    al.DEUDA = 0;
+                    Conexion.Entidades.ALUMNO.Add(al);
+                    Conexion.Entidades.SaveChanges();
+                    Estado.Text = "Alumno Agregado";
+                    Response.AddHeader("REFRESH", "3;URL=ApoderadoTemp.aspx");
+                    break;
+
+                case 1:
+
+                  
+
+
+
+
+
+                    al.CURSO_ID_CURSO = i;
+                    al.ALUMNO_ID = idAlumno;
+                    al.AP_PATERNO = apellidoP;
+                    al.AP_MATERNO = apellidoM;
+                    al.NOMBRE = nombre;
+                    al.RUT = rut;
+                    al.FECH_NAC = fecha_nac;
+                    al.APODERADO_APODERADO_ID = idApo;
+                    al.DEUDA = deuda;
+                    Conexion.Entidades.ALUMNO.Add(al);
+                    Conexion.Entidades.SaveChanges();
+                    Estado.Text = "Alumno Agregado";
+                    Response.AddHeader("REFRESH", "3;URL=ApoderadoTemp.aspx");
+
+                    break;
+                default:
+                    break;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         }
 
-        public void cargarColegios() {
+        public void cargarColegios()
+        {
 
 
             var col = (from x in Conexion.Entidades.COLEGIO
