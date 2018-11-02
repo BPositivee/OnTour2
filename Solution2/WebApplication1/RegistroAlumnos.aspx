@@ -101,10 +101,11 @@
                 <tr>
                     <td>Colegio</td>
                     <td>
-                        <asp:TextBox ID="tbxColegio" runat="server" CssClass="form-control"></asp:TextBox></td>
-                    <td>
-                        <asp:Button ID="btnBuscarCursos" runat="server" Text="Buscar Cursos" OnClick="btnBuscarCursos_Click" class="btn btn-primary"/>
+                        <asp:DropDownList ID="DdlColegio" runat="server" class="btn btn-primary" AutoPostBack="True" OnSelectedIndexChanged="DdlColegio_SelectedIndexChanged">
+                        </asp:DropDownList>
                     </td>
+                    <td>
+                        &nbsp;</td>
 
 
 
@@ -112,7 +113,7 @@
                 <tr>
                     <td>Curso</td>
                     <td>
-                        <asp:DropDownList ID="ddlCursos" runat="server" class="btn btn-primary"></asp:DropDownList></td>
+                        <asp:DropDownList ID="ddlCursos" runat="server" class="btn btn-primary" AutoPostBack="True"></asp:DropDownList></td>
                     <td></td>
                 </tr>
 

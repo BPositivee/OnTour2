@@ -15,7 +15,13 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-        
+
+            if (!IsPostBack)
+            {
+
+                cargarColegios();
+
+            }
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -67,35 +73,38 @@ namespace WebApplication1
 
         }
 
-        protected void btnBuscarCursos_Click(object sender, EventArgs e)
+        public void cargarColegios() {
+
+
+            var col = (from x in Conexion.Entidades.COLEGIO
+                       select x.NOMBRE_COLEGIO);
+
+            DdlColegio.DataSource = col.ToList();
+            DdlColegio.DataBind();
+            DdlColegio.Items.Insert(0, "SELECIONE");
+
+
+        }
+
+        protected void DdlColegio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string colegio = tbxColegio.Text;
-            decimal colegioId;
+            string nombreColegio = DdlColegio.SelectedValue;
 
-            var consulta = from c in Conexion.Entidades.COLEGIO
-                           where c.NOMBRE_COLEGIO == colegio
-                           select new
-                           {
-                               c.COLEGIO_ID
 
-                           };
-
-            foreach (var x in consulta)
-            {
-
-                colegioId = x.COLEGIO_ID;
-
-                var cur = from cu in Conexion.Entidades.CURSO
-                          where cu.COLEGIO_COLEGIO_ID == colegioId
-                          select cu.NOMBRE_CURSO;
+            var colId = (from x in Conexion.Entidades.COLEGIO
+                         where x.NOMBRE_COLEGIO == nombreColegio
+                         select x.COLEGIO_ID).First();
 
 
 
+            var cur = (from y in Conexion.Entidades.CURSO
+                       where y.COLEGIO_COLEGIO_ID == colId
+                       select y.NOMBRE_CURSO);
 
-                ddlCursos.DataSource = cur.ToList();
-                ddlCursos.DataBind();
-            }
 
+            ddlCursos.DataSource = cur.ToList();
+            ddlCursos.DataBind();
+            ddlCursos.Items.Insert(0, "SELECIONE");
         }
     }
 }

@@ -130,22 +130,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFecha;
         
         /// <summary>
-        /// Control tbxColegio.
+        /// Control DdlColegio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxColegio;
-        
-        /// <summary>
-        /// Control btnBuscarCursos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscarCursos;
+        protected global::System.Web.UI.WebControls.DropDownList DdlColegio;
         
         /// <summary>
         /// Control ddlCursos.
