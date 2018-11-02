@@ -54,6 +54,7 @@ namespace WebApplication1
                 al.RUT = rut;
                 al.FECH_NAC = fecha_nac;
                 al.APODERADO_APODERADO_ID = idApo;
+                 al.DEUDA = 0;
           
           
 

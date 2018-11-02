@@ -121,6 +121,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button btnPagar;
         
         /// <summary>
+        /// Control lblContrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContrato;
+        
+        /// <summary>
+        /// Control gvContrato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvContrato;
+        
+        /// <summary>
         /// Control btnArmaContrato.
         /// </summary>
         /// <remarks>

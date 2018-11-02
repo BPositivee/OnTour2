@@ -17,6 +17,7 @@ namespace WebApplication1
 
             txtUser.Text = "Bienvenido " + user;
             CargarAlumnos();
+            CargarContrato();
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -53,7 +54,10 @@ namespace WebApplication1
 
         protected void btnRevisarContrato_Click(object sender, EventArgs e)
         {
-
+            lblContrato.Enabled = true;
+            gvContrato.Enabled = true;
+            lblContrato.Visible = true;
+            gvContrato.Visible = true;
         }
 
         protected void btnArmaContrato_Click(object sender, EventArgs e)
@@ -88,7 +92,28 @@ namespace WebApplication1
 
 
         }
+        public void CargarContrato() {
+            String id = Session["id"].ToString();
+            decimal encargado_id = Convert.ToDecimal(id);
+            var con = (from x in Conexion.Entidades.CONTRATO
+                       where x.ENCARGADO_ENCARGADO_ID == encargado_id
+                       select new {
 
+                           x.DESTINO.PAIS,
+                           x.TOUR.NOMBRE_TOURS,
+                           x.POLIZA.NOMBRE_POLIZA,
+                           x.SER_ADICIONAL.NOMBRE_SER,
+                           x.FECHA,
+                           x.TOTAL
+
+                       });
+
+
+            gvContrato.DataSource = con.ToList();
+            gvContrato.DataBind();
+
+
+        }
         protected void btnPagar_Click(object sender, EventArgs e)
         {
             String id = Session["id"].ToString();
