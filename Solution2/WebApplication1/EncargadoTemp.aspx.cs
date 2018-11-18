@@ -171,21 +171,21 @@ namespace WebApplication1
                     cuerpoPagos.Alignment = Element.ALIGN_JUSTIFIED;
 
                     //cuerpoDestinos 
-                    Paragraph cuerpoDestinos = new Paragraph("DESTINOS: \n \nTomando en cuenta las peticiones mencionadas en el sistema por " + nomEncargadoCompleto + ", el destino elegido es " + nombreDestino + ", junto con el tour " + nombreTour);
+                    Paragraph cuerpoDestinos = new Paragraph("DESTINOS: \n \nTomando en cuenta las peticiones mencionadas en el sistema por " + nomEncargadoCompleto + ", el destino elegido es " + nombreDestino + ", junto con el tour " + nombreTour + " \n \n");
                     cuerpoDestinos.Alignment = Element.ALIGN_JUSTIFIED;
 
                     //cuerpoSeguros
-                    Paragraph cuerpoSeguros = new Paragraph("El seguro elegido para cada uno de los estudiantes es " + nombreSeguro + ", que ofrece " + infoSeguro + " con el valor de $" + valorSeguro + " y con una suma asegurada de $" + valorAsegu + ", estando este ya agregado al valor total del contrato.");
+                    Paragraph cuerpoSeguros = new Paragraph("SEGUROS: \n \nEl seguro elegido para cada uno de los estudiantes es " + nombreSeguro + ", que ofrece " + infoSeguro + " con el valor de $" + valorSeguro + " y con una suma asegurada de $" + valorAsegu + ", estando este ya agregado al valor total del contrato. \n \n");
                     cuerpoSeguros.Alignment = Element.ALIGN_JUSTIFIED;
 
                     //cuerpoServicios
-                    Paragraph cuerpoServicio = new Paragraph("SERVICIOS ADICIONALES: \n \nLos servicios adicionales requeridos para el viaje son " + nombreServicio + " con el valor adicional de $" + totalServicio + " estando este ya agregado al valor total del contrato.");
+                    Paragraph cuerpoServicio = new Paragraph("SERVICIOS ADICIONALES: \n \n Los servicios adicionales requeridos para el viaje son " + nombreServicio + " con el valor adicional de $" + totalServicio + " estando este ya agregado al valor total del contrato. \n \n");
                     cuerpoServicio.Alignment = Element.ALIGN_JUSTIFIED;
 
 
                     //final
 
-                    Paragraph final = new Paragraph("Tomando estos puntos presentados y detallados del viaje el cual será realizado el día " + fechaViaje);
+                    Paragraph final = new Paragraph("\n \nTomando estos puntos presentados y detallados del viaje el cual será realizado el día " + fechaViaje);
                     final.Alignment = Element.ALIGN_JUSTIFIED;
 
 
@@ -194,6 +194,7 @@ namespace WebApplication1
                     doc.Add(cuerpoPagos);
                     doc.Add(cuerpoDestinos);
                     doc.Add(cuerpoSeguros);
+                    doc.Add(cuerpoServicio);
                     doc.Add(final);
                     doc.Close();
 
