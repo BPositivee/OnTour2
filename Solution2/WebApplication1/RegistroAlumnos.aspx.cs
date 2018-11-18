@@ -94,12 +94,6 @@ namespace WebApplication1
 
                 case 1:
 
-                  
-
-
-
-
-
                     al.CURSO_ID_CURSO = i;
                     al.ALUMNO_ID = idAlumno;
                     al.AP_PATERNO = apellidoP;

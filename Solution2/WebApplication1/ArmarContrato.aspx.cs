@@ -114,6 +114,8 @@ namespace WebApplication1
                 p.DEUDA = valTotal;
             }
             Conexion.Entidades.SaveChanges();
+
+            Response.AddHeader("REFRESH", "3;URL=EncargadoTemp.aspx");
         }
 
         public void CargarDdlColegio() {
