@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DALC;
 using Negocio;
+using System.Net;
+using System.Net.Mail;
+
 namespace WebApplication1
 {
     public partial class RealizarPago : System.Web.UI.Page
@@ -78,6 +81,30 @@ namespace WebApplication1
 
 
             Conexion.Entidades.SaveChanges();
+
+            //CREAR CORREO
+            MailMessage msj = new MailMessage();
+            //obtener correo
+            var correo = (from x in Conexion.Entidades.APODERADO
+                          where apoderado_id == x.APODERADO_ID
+                          select x.EMAIL).First();
+            msj.To.Add(new MailAddress(correo));
+            msj.From = new MailAddress("Agencia.OnTour.Estudiantes@gmail.com");
+
+
+            msj.Subject = "Pago realizado ";
+            msj.Body = "Se ha realizado un pago con un monto de $" + monto;
+            msj.IsBodyHtml = false;
+            msj.Priority = MailPriority.Normal;
+            //definir smtp
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new NetworkCredential("agenciaontour.estudiantes@gmail.com", "portafolio123");
+            smtp.Send(msj);
+
+
 
             Response.AddHeader("REFRESH", "3;URL=ApoderadoTemp.aspx");
         }
