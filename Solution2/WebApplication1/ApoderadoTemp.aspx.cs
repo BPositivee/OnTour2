@@ -67,7 +67,7 @@ namespace WebApplication1
 
         protected void RevisarContrato_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("VerContratoAp.aspx");
         }
     }
 }

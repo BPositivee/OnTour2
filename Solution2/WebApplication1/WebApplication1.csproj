@@ -186,6 +186,7 @@
     <Content Include="scripts\umd\popper-utils.min.js" />
     <Content Include="scripts\umd\popper.js" />
     <Content Include="scripts\umd\popper.min.js" />
+    <Content Include="VerContratoAp.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -270,6 +271,13 @@
     </Compile>
     <Compile Include="RegistroAlumnos.aspx.designer.cs">
       <DependentUpon>RegistroAlumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerContratoAp.aspx.cs">
+      <DependentUpon>VerContratoAp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerContratoAp.aspx.designer.cs">
+      <DependentUpon>VerContratoAp.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
