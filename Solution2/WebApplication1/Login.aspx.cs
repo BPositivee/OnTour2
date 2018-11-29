@@ -69,6 +69,7 @@ namespace WebApplication1
                     foreach (var ag in consulta3)
                     {
                         Session["user"] = ag.USERNAME;
+                        Session["id"] = ag.AGENTE_ID;
                         Response.Redirect("AgenteTemp.aspx");
 
                     }
