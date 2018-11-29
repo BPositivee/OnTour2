@@ -9,6 +9,8 @@ using DALC;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
+using System.Net;
+using System.Net.Mail;
 namespace WebApplication1
 {
     public partial class EncargadoTemp : System.Web.UI.Page
@@ -341,6 +343,50 @@ namespace WebApplication1
 
 
             Conexion.Entidades.SaveChanges();
+
+            //correo
+            MailMessage msj = new MailMessage();
+            //obtener correo del encargado
+            var correo = (from x in Conexion.Entidades.ENCARGADO
+                          where encargado_id == x.ENCARGADO_ID
+                          select x.EMAIL).First();
+
+            //obtener correo de agente
+            var correo_agente = (from x in Conexion.Entidades.ENCARGADO
+                             where encargado_id == x.ENCARGADO_ID
+                             select x.AGENTE.EMAIL).First();
+            //obtener nombre completo de encargado
+            var nombreEn = (from x in Conexion.Entidades.ENCARGADO
+                            where encargado_id == x.ENCARGADO_ID
+                            select x.NOMBRE).First();
+
+            var apelPatEn = (from x in Conexion.Entidades.ENCARGADO
+                             where encargado_id == x.ENCARGADO_ID
+                             select x.AP_PATERNO).First();
+
+            var apelMatEn = (from x in Conexion.Entidades.ENCARGADO
+                             where encargado_id == x.ENCARGADO_ID
+                             select x.AP_MATERNO).First();
+            string nomEncargadoCompleto = nombreEn + " " + apelPatEn + " " + apelMatEn;
+
+            msj.To.Add(new MailAddress(correo));
+            msj.To.Add(new MailAddress(correo_agente));
+            msj.From = new MailAddress("Agencia.OnTour.Estudiantes@gmail.com");
+
+
+            msj.Subject = "Pago realizado ";
+            msj.Body = "Se ha realizado un pago con un monto de $" + montoTotal + " nombre del Encargado: " + nomEncargadoCompleto;
+            msj.IsBodyHtml = false;
+            msj.Priority = MailPriority.Normal;
+            //definir smtp
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new NetworkCredential("agenciaontour.estudiantes@gmail.com", "portafolio123");
+            smtp.Send(msj);
+
+
 
 
             Response.Redirect("EncargadoTemp.aspx");
