@@ -13,6 +13,23 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             CargarContatos();
+            CargarPolizas();
+        }
+
+        private void CargarPolizas()
+        {
+            var polizas = (from x in Conexion.Entidades.POLIZA
+                           select new {
+                               ID = x.POLIZA_ID,
+                               Nombre = x.NOMBRE_POLIZA,
+                               Descripcion = x.DESCRIPCION,
+                               Fecha = x.FECHA_COBERTURA,
+                               Prima = x.PRIMA,
+                               Suma = x.SUMA_ASEGURADA
+
+                          });
+            gvPolizas.DataSource = polizas.ToList();
+            gvPolizas.DataBind();
         }
 
         private void CargarContatos()
@@ -46,6 +63,11 @@ namespace WebApplication1
             Session["user"] = "";
             Session["id"] = "";
             Response.Redirect("Login.aspx");
+        }
+
+        protected void btnAgregarPolizas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarPolizas.aspx");
         }
     }
 }

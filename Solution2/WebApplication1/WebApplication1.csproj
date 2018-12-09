@@ -109,7 +109,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdministradorTemp.aspx" />
     <Content Include="AgenteTemp.aspx" />
     <Content Include="AgregarPolizas.aspx" />
     <Content Include="ApoderadoTemp.aspx" />
@@ -203,13 +202,6 @@
     <Content Include="scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministradorTemp.aspx.cs">
-      <DependentUpon>AdministradorTemp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdministradorTemp.aspx.designer.cs">
-      <DependentUpon>AdministradorTemp.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AgenteTemp.aspx.cs">
       <DependentUpon>AgenteTemp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

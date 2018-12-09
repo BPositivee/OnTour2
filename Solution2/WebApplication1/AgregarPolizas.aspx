@@ -15,6 +15,20 @@
         .auto-style1 {
             height: 26px;
         }
+        .auto-style2 {
+            width: 12px;
+        }
+        .auto-style3 {
+            height: 26px;
+            width: 12px;
+        }
+        .auto-style4 {
+            height: 27px;
+        }
+        .auto-style5 {
+            width: 12px;
+            height: 27px;
+        }
     </style>
 </head>
 <body style="background-image: url('images/Greece.jpg'); background-size: cover">
@@ -55,51 +69,69 @@
 
                    <td>&nbsp;</td>
                    <td>&nbsp;</td>
-                   <td>&nbsp;</td>
+                   <td class="auto-style2">&nbsp;</td>
                </tr>
                 <tr>
-                    <td>Fecha de Cobertura</td>
-                    <td>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <td class="auto-style4">Fecha de Cobertura</td>
+                    <td class="auto-style4">
+                        <asp:TextBox ID="txtFecha" runat="server" placeholder="DD/MM/AAAA" CssClass="form-control"></asp:TextBox>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style5">
+                        <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ControlToValidate="txtFecha" ErrorMessage="*DatoObligatorio" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style1">Nombre Póliza</td>
                     <td class="auto-style1">
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
                     </td>
-                    <td class="auto-style1"></td>
+                    <td class="auto-style3">
+                        <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="txtNombre" ErrorMessage="*DatoObligatorio" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
                     <td>Descripción</td>
                     <td>
-                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control"></asp:TextBox>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style2">
+                        <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="*DatoObligatorio" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
                     <td>Prima a Pagar</td>
                     <td>
-                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtPrima" runat="server" CssClass="form-control"></asp:TextBox>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style2">
+                        <asp:RequiredFieldValidator ID="rfvPrima" runat="server" ControlToValidate="txtPrima" ErrorMessage="*DatoObligatorio" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
                     <td>Suma Asegurada</td>
                     <td>
-                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtSuma" runat="server" CssClass="form-control"></asp:TextBox>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style2">
+                        <asp:RequiredFieldValidator ID="rfvSuma" runat="server" ControlToValidate="txtSuma" ErrorMessage="*DatoObligatorio" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
+               <tr>
+
+                   <td>
+                       <asp:Label ID="lblEstado" runat="server" Text=""></asp:Label>
+                   </td>
+                   <td>&nbsp;</td>
+                   <td class="auto-style2">&nbsp;</td>
+               </tr>
                 <tr>
                     <td>
                           <asp:HyperLink ID="hlAgente" runat="server" NavigateUrl="AgenteTemp.aspx">Volver</asp:HyperLink>
                     </td>
                     <td>
-                        <asp:Button ID="btnGuardarPoliza" runat="server" Text="Agregar Póliza" class="btn btn-success" />
+                        <asp:Button ID="btnGuardarPoliza" runat="server" Text="Agregar Póliza" class="btn btn-outline-success" OnClick="btnGuardarPoliza_Click" />
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style2">&nbsp;</td>
                 </tr>
 
             </table>

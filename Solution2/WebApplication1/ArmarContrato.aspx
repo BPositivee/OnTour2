@@ -38,7 +38,7 @@
                     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="DestinosPreferidos.aspx">Destinos Preferidos <span class="sr-only">(current)</span></a>
+                                
                             </li>
 
                         </ul>
@@ -161,7 +161,7 @@
                     <td class="auto-style1"></td>
 
                     <td>
-                        <asp:Button ID="btnRegistrarContrato" runat="server" Text="Registrar Contrato" class="btn btn-success" OnClick="btnRegistrarContrato_Click" /></td>
+                        <asp:Button ID="btnRegistrarContrato" runat="server" Text="Registrar Contrato" class="btn btn-outline-success" OnClick="btnRegistrarContrato_Click" /></td>
 
                 </tr>
             </table>

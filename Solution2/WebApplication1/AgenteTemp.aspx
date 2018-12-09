@@ -11,6 +11,11 @@
     <script src="scripts/bootstrap.min.js"></script>
     <link href="Estilos/estiloRegistro.css" rel="stylesheet" />
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            height: 26px;
+        }
+    </style>
 </head>
 <body style="background-image: url('images/Greece.jpg'); background-size: cover">
     <div runat="server">
@@ -43,7 +48,7 @@
 
         <br />
         <form id="form1" runat="server">
-                <table style="width: 100%;" align="center">
+            <table style="width: 100%;" align="center">
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -62,35 +67,53 @@
                 </tr>
                 <tr>
                     <td class="auto-style1"></td>
-                    <td class="auto-style1"></td>
+                    <td class="auto-style1">
+                        <asp:Label ID="lblContrato" runat="server" Text="Mis Contratos:"></asp:Label>
+                    </td>
                     <td class="auto-style1"></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td>Mis Contratos:</td>
+                    <td></td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                      
-                            <asp:GridView ID="gvContratos" runat="server" HeaderStyle-BackColor="Green" HeaderStyle-CssClass="text-white" CssClass="gv1"></asp:GridView>
+
+                        <asp:GridView ID="gvContratos" runat="server" HeaderStyle-BackColor="Green" HeaderStyle-CssClass="text-white" CssClass="gv1"></asp:GridView>
 
 
-                        
+
 
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style1"></td>
+                    <td class="auto-style1">
+                        <asp:Label ID="lblPolizas" runat="server" Text="Polizas: "></asp:Label>
+                    </td>
+                    <td class="auto-style1"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style1"></td>
+                    <td class="auto-style1">
+                        <asp:GridView ID="gvPolizas" runat="server" HeaderStyle-BackColor="Green" HeaderStyle-CssClass="text-white" CssClass="gv1">
+                        </asp:GridView>
+                    </td>
+                    <td class="auto-style1"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style1"></td>
+                    <td class="auto-style1">&nbsp;</td>
+                    <td class="auto-style1"></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        &nbsp;</td>
+                        <asp:Button ID="btnAgregarPolizas" runat="server" Text="Agregar Polizas" class="btn btn-outline-success" OnClick="btnAgregarPolizas_Click" />
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
 

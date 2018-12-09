@@ -10,7 +10,7 @@
 namespace WebApplication1 {
     
     
-    public partial class AgenteTemp {
+    public partial class VerContratoAp {
         
         /// <summary>
         /// Control form1.
@@ -22,66 +22,39 @@ namespace WebApplication1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control btnCerraSesion.
+        /// Control DdlNombreAl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCerraSesion;
+        protected global::System.Web.UI.WebControls.DropDownList DdlNombreAl;
         
         /// <summary>
-        /// Control txtUser.
+        /// Control lblPrueba.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtUser;
+        protected global::System.Web.UI.WebControls.Label lblPrueba;
         
         /// <summary>
-        /// Control lblContrato.
+        /// Control hlAlumno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContrato;
+        protected global::System.Web.UI.WebControls.HyperLink hlAlumno;
         
         /// <summary>
-        /// Control gvContratos.
+        /// Control VerContrato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvContratos;
-        
-        /// <summary>
-        /// Control lblPolizas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPolizas;
-        
-        /// <summary>
-        /// Control gvPolizas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvPolizas;
-        
-        /// <summary>
-        /// Control btnAgregarPolizas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarPolizas;
+        protected global::System.Web.UI.WebControls.Button VerContrato;
     }
 }
