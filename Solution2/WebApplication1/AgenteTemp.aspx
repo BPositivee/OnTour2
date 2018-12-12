@@ -10,7 +10,7 @@
     <script src="scripts/popper.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
     <link href="Estilos/estiloRegistro.css" rel="stylesheet" />
-    <title></title>
+    <title>Agente - OnTour</title>
     <style type="text/css">
         .auto-style1 {
             height: 26px;

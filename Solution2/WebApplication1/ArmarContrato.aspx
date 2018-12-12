@@ -158,7 +158,9 @@
                     <td>
                         <asp:Label ID="lblEstado" runat="server" Text=""></asp:Label>
                     </td>
-                    <td class="auto-style1"></td>
+                    <td class="auto-style1">
+                        <asp:HyperLink ID="hlAgente" runat="server" NavigateUrl="EncargadoTemp.aspx">Volver</asp:HyperLink>
+                    </td>
 
                     <td>
                         <asp:Button ID="btnRegistrarContrato" runat="server" Text="Registrar Contrato" class="btn btn-outline-success" OnClick="btnRegistrarContrato_Click" /></td>

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Registrate</title>
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <script src="scripts/jquery-3.0.0.min.js"></script>
     <script src="scripts/popper.min.js"></script>
@@ -233,7 +233,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button ID="btnGuardarColegio" runat="server" Text="Registrar Colegio" class="btn btn-secondary" OnClick="btnGuardarColegio_Click"  Enabled="False" Visible="False" />
+                    <asp:Button ID="btnGuardarColegio" runat="server" Text="Registrar Colegio" class="btn btn-outline-secondary" OnClick="btnGuardarColegio_Click"  Enabled="False" Visible="False" />
                 </td>
                 <td>
                     <asp:Label ID="lblMensajeC" runat="server" Text=""  Enabled="False" Visible="False"></asp:Label></td>
@@ -289,7 +289,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button ID="btnGuardarCurso" runat="server" Text="Registrar Curso"  class="btn btn-secondary" OnClick="btnGuardarCurso_Click"   Enabled="False" Visible="False"/>
+                    <asp:Button ID="btnGuardarCurso" runat="server" Text="Registrar Curso"  class="btn btn-outline-secondary" OnClick="btnGuardarCurso_Click"   Enabled="False" Visible="False"/>
                 </td>
                 <td>
                     <asp:Label ID="lblMensajeCu" runat="server" Text=""  Enabled="False" Visible="False"></asp:Label>
