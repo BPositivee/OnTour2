@@ -58,7 +58,7 @@ namespace WebApplication1
         public void RegistrarEncargado()
         {
             ENCARGADO en = new ENCARGADO();
-            if (RadioButtonList1.SelectedValue == "Si" && RadioButtonList2.SelectedValue == "Si")
+            if (rblColegio.SelectedValue == "Si" && rblCurso.SelectedValue == "Si")
             { //list1 = colegio     list2 = curso
                 var e = (from p in Conexion.Entidades.ENCARGADO select p.ENCARGADO_ID).Max();
                 decimal encargado_id = e + 1;
@@ -109,9 +109,6 @@ namespace WebApplication1
                 lblMensaje.Text = "Agregado Con Exito";
                 lblMensaje.Visible = true;
 
-
-            
-
             }
 
         }
@@ -124,10 +121,10 @@ namespace WebApplication1
 
             //buscar ultimo registro
 
-            var a = (from p in Conexion.Entidades.APODERADO select p.APODERADO_ID).Max();
+            var valorId = (from p in Conexion.Entidades.APODERADO select p.APODERADO_ID).Max();
 
 
-            decimal id = a + 1;
+            decimal id = valorId + 1;
             string username = tbxUsername.Text.ToUpper();
             string password = tbxPassword.Text.ToUpper();
             string email = tbxEmail.Text.ToUpper();
@@ -166,7 +163,7 @@ namespace WebApplication1
             CargarDdlColegio();
         
 
-            RadioButtonList1.SelectedValue = "Si";
+            rblColegio.SelectedValue = "Si";
 
         }
 
@@ -196,7 +193,7 @@ namespace WebApplication1
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (RadioButtonList1.SelectedValue == "No")
+            if (rblColegio.SelectedValue == "No")
             {
                 lblNombreColegio.Enabled = true;
                 lblNombreColegio.Visible = true;
@@ -271,7 +268,7 @@ namespace WebApplication1
 
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (RadioButtonList2.SelectedValue == "No")
+            if (rblCurso.SelectedValue == "No")
             {
                 lblNombreCurso.Enabled = true;
                 lblNombreCurso.Visible = true;
@@ -320,8 +317,8 @@ namespace WebApplication1
                 rfvColegio.Visible = true;
                 Pregunta1.Enabled = true;
                 Pregunta1.Visible = true;
-                RadioButtonList1.Enabled = true;
-                RadioButtonList1.Visible = true;
+                rblColegio.Enabled = true;
+                rblColegio.Visible = true;
                 rfvListaColegio.Enabled = true;
                 rfvListaColegio.Visible = true;
 
@@ -334,8 +331,8 @@ namespace WebApplication1
                 rfvCurso.Visible = true;
                 Pregunta2.Enabled = true;
                 Pregunta2.Visible = true;
-                RadioButtonList2.Enabled = true;
-                RadioButtonList2.Visible = true;
+                rblCurso.Enabled = true;
+                rblCurso.Visible = true;
                 rfvListaCurso.Enabled = true;
                 rfvListaCurso.Visible = true;
             }
@@ -349,8 +346,8 @@ namespace WebApplication1
                 rfvColegio.Visible = false;
                 Pregunta1.Enabled = false;
                 Pregunta1.Visible = false;
-                RadioButtonList1.Enabled = false;
-                RadioButtonList1.Visible = false;
+                rblColegio.Enabled = false;
+                rblColegio.Visible = false;
                 rfvListaColegio.Enabled = false;
                 rfvListaColegio.Visible = false;
 
@@ -363,8 +360,8 @@ namespace WebApplication1
                 rfvCurso.Visible = false;
                 Pregunta2.Enabled = false;
                 Pregunta2.Visible = false;
-                RadioButtonList2.Enabled = false;
-                RadioButtonList2.Visible = false;
+                rblCurso.Enabled = false;
+                rblCurso.Visible = false;
                 rfvListaCurso.Enabled = false;
                 rfvListaCurso.Visible = false;
 

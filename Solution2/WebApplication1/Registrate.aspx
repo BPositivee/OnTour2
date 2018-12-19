@@ -187,7 +187,7 @@
             <tr>
                 <td class="auto-style4"></td>
                 <td>
-                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" Enabled="False" Visible="False">
+                    <asp:RadioButtonList ID="rblColegio" runat="server" RepeatDirection="Horizontal" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" Enabled="False" Visible="False">
                         <asp:ListItem Selected="True" Text="Si"></asp:ListItem>
                         <asp:ListItem Text="No"></asp:ListItem>
                     </asp:RadioButtonList>
@@ -263,7 +263,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:RadioButtonList ID="RadioButtonList2" runat="server"  RepeatDirection="Horizontal" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" Enabled="False" Visible="False">
+                    <asp:RadioButtonList ID="rblCurso" runat="server"  RepeatDirection="Horizontal" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" Enabled="False" Visible="False">
                         <asp:ListItem Selected="True" Text="Si"></asp:ListItem>
                         <asp:ListItem Text="No"></asp:ListItem>
                     </asp:RadioButtonList>
