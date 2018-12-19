@@ -193,7 +193,7 @@
                     </asp:RadioButtonList>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="rfvListaColegio" runat="server" ErrorMessage="*Seleccione una opcion" ForeColor="Red" ControlToValidate="RadioButtonList1" Enabled="False" Visible="False"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvListaColegio" runat="server" ErrorMessage="*Seleccione una opcion" ForeColor="Red" ControlToValidate="rblColegio" Enabled="False" Visible="False"></asp:RequiredFieldValidator>
                 </td>
 
             </tr>
@@ -269,7 +269,7 @@
                     </asp:RadioButtonList>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="rfvListaCurso" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="*Seleccione una opcion" ForeColor="Red" Enabled="False" Visible="False"></asp:RequiredFieldValidator >
+                    <asp:RequiredFieldValidator ID="rfvListaCurso" runat="server" ControlToValidate="rblCurso" ErrorMessage="*Seleccione una opcion" ForeColor="Red" Enabled="False" Visible="False"></asp:RequiredFieldValidator >
                 </td>
 
             </tr>
